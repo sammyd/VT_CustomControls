@@ -60,6 +60,7 @@ public class CircularGradientLayer : CALayer {
 class RingLayer : CALayer {
   private let backgroundLayer = CAShapeLayer()
   private let gradientLayer = CircularGradientLayer()
+  private let tipLayer = CAShapeLayer()
   private let foregroundLayer = CALayer()
   private let foregroundMaskLayer = CAShapeLayer()
   private let shadowLayer     = CAShapeLayer()
@@ -98,7 +99,7 @@ class RingLayer : CALayer {
     let startAngle = CGFloat(-M_PI_2)
     let endAngle = CGFloat(proportionComplete * 2.0 * CGFloat(M_PI) + startAngle)
     
-    for layer in [gradientLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer, shadowLayer, shadowMaskLayer] {
+    for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer, shadowLayer, shadowMaskLayer] {
       layer.bounds = bounds
       layer.position = center
     }
@@ -110,11 +111,17 @@ class RingLayer : CALayer {
       }
     }
     
+    if proportionComplete < 0.02 {
+      foregroundLayer.removeFromSuperlayer()
+      shadowLayer.removeFromSuperlayer()
+      return
+    }
+    
     // Prepare the paths
     let backgroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: startAngle + CGFloat(2.0 * M_PI), clockwise: true)
     let foregroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-    let ringTipPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: endAngle - CGFloat(M_PI_4), endAngle: endAngle, clockwise: true)
-    let shadowMaskPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: endAngle - CGFloat(M_PI_4), endAngle: endAngle + CGFloat(M_PI_4), clockwise: true)
+    let ringTipPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: endAngle - 0.1, endAngle: endAngle, clockwise: true)
+    let shadowMaskPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: endAngle - 0.1, endAngle: endAngle + CGFloat(M_PI_4), clockwise: true)
     
     let cgRingTipPath = CGPathCreateCopyByStrokingPath(ringTipPath.CGPath, nil, ringWidth, kCGLineCapRound, kCGLineJoinRound, 10.0)
     let cgShadowMaskPath = CGPathCreateCopyByStrokingPath(shadowMaskPath.CGPath, nil, ringWidth, kCGLineCapRound, kCGLineJoinRound, 10.0)
@@ -128,6 +135,12 @@ class RingLayer : CALayer {
     backgroundLayer.lineWidth = ringWidth
     backgroundLayer.fillColor = nil
     
+    tipLayer.path = ringTipPath.CGPath
+    tipLayer.lineCap = kCALineCapRound
+    tipLayer.strokeColor = ringColors.0
+    tipLayer.lineWidth = ringWidth
+    tipLayer.fillColor = nil
+    
     foregroundMaskLayer.path = foregroundPath.CGPath
     foregroundMaskLayer.lineCap = kCALineCapRound
     foregroundMaskLayer.lineWidth = ringWidth
@@ -136,6 +149,7 @@ class RingLayer : CALayer {
     
     foregroundLayer.mask = foregroundMaskLayer
     foregroundLayer.addSublayer(gradientLayer)
+    foregroundLayer.addSublayer(tipLayer)
     gradientLayer.colours = ringColors
     // Need to rotate it
     gradientLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeRotation(endAngle + CGFloat(M_PI)))
@@ -165,7 +179,7 @@ class ThreeRingView : UIView {
   let colours = [(UIColor(red: 251.0/255.0, green: 12/255.0, blue: 116/255.0, alpha: 1.0), UIColor(red: 200/255.0, green: 0, blue: 32/225.0, alpha: 1.0)),
                  (UIColor(red: 158/255.0, green: 255/255.0, blue: 9/255.0, alpha: 1.0),    UIColor(red: 80/255.0, green: 200/255.0, blue: 4/255.0, alpha: 1.0)),
                  (UIColor(red: 33/255.0, green: 253/255.0, blue: 197/255.0, alpha: 1.0),   UIColor(red: 15/255.0, green: 160/255.0, blue: 180/255.0, alpha: 1.0))]
-  let propFilled: [CGFloat] = [1.75, 1.15, 0.35]
+  let propFilled: [CGFloat] = [1.75, 0.08, 1.35]
   let ringWidth: CGFloat = 30.0
   let ringPadding: CGFloat = 2.0
   
