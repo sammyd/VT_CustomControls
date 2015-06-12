@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22B1EE6E1B2B74AB0048F08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE6D1B2B74AB0048F08C /* AppDelegate.swift */; };
+		22B1EE701B2B74AB0048F08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE6F1B2B74AB0048F08C /* ViewController.swift */; };
+		22B1EE731B2B74AB0048F08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B1EE711B2B74AB0048F08C /* Main.storyboard */; };
+		22B1EE751B2B74AB0048F08C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B1EE741B2B74AB0048F08C /* Images.xcassets */; };
+		22B1EE781B2B74AB0048F08C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1EE761B2B74AB0048F08C /* LaunchScreen.xib */; };
+		22B1EE841B2B74AB0048F08C /* HealthRingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE831B2B74AB0048F08C /* HealthRingsTests.swift */; };
+		22B1EE8F1B2B77D90048F08C /* CircularGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */; };
+		22B1EE911B2B787D0048F08C /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE901B2B787D0048F08C /* RingLayer.swift */; };
+		22B1EE931B2B78870048F08C /* ThreeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE921B2B78870048F08C /* ThreeRingView.swift */; };
+		22B1EE951B2B789F0048F08C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE941B2B789F0048F08C /* Utilities.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22B1EE7E1B2B74AB0048F08C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22B1EE601B2B74AB0048F08C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22B1EE671B2B74AB0048F08C;
+			remoteInfo = HealthRings;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22B1EE681B2B74AB0048F08C /* HealthRings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthRings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B1EE6C1B2B74AB0048F08C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B1EE6D1B2B74AB0048F08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22B1EE6F1B2B74AB0048F08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22B1EE721B2B74AB0048F08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22B1EE741B2B74AB0048F08C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		22B1EE771B2B74AB0048F08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		22B1EE7D1B2B74AB0048F08C /* HealthRingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthRingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B1EE821B2B74AB0048F08C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B1EE831B2B74AB0048F08C /* HealthRingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRingsTests.swift; sourceTree = "<group>"; };
+		22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularGradient.swift; sourceTree = "<group>"; };
+		22B1EE901B2B787D0048F08C /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
+		22B1EE921B2B78870048F08C /* ThreeRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeRingView.swift; sourceTree = "<group>"; };
+		22B1EE941B2B789F0048F08C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22B1EE651B2B74AB0048F08C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B1EE7A1B2B74AB0048F08C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22B1EE5F1B2B74AB0048F08C = {
+			isa = PBXGroup;
+			children = (
+				22B1EE6A1B2B74AB0048F08C /* HealthRings */,
+				22B1EE801B2B74AB0048F08C /* HealthRingsTests */,
+				22B1EE691B2B74AB0048F08C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22B1EE691B2B74AB0048F08C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22B1EE681B2B74AB0048F08C /* HealthRings.app */,
+				22B1EE7D1B2B74AB0048F08C /* HealthRingsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22B1EE6A1B2B74AB0048F08C /* HealthRings */ = {
+			isa = PBXGroup;
+			children = (
+				22B1EE8D1B2B77940048F08C /* UI */,
+				22B1EE6D1B2B74AB0048F08C /* AppDelegate.swift */,
+				22B1EE6F1B2B74AB0048F08C /* ViewController.swift */,
+				22B1EE711B2B74AB0048F08C /* Main.storyboard */,
+				22B1EE741B2B74AB0048F08C /* Images.xcassets */,
+				22B1EE761B2B74AB0048F08C /* LaunchScreen.xib */,
+				22B1EE6B1B2B74AB0048F08C /* Supporting Files */,
+			);
+			path = HealthRings;
+			sourceTree = "<group>";
+		};
+		22B1EE6B1B2B74AB0048F08C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22B1EE6C1B2B74AB0048F08C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22B1EE801B2B74AB0048F08C /* HealthRingsTests */ = {
+			isa = PBXGroup;
+			children = (
+				22B1EE831B2B74AB0048F08C /* HealthRingsTests.swift */,
+				22B1EE811B2B74AB0048F08C /* Supporting Files */,
+			);
+			path = HealthRingsTests;
+			sourceTree = "<group>";
+		};
+		22B1EE811B2B74AB0048F08C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22B1EE821B2B74AB0048F08C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22B1EE8D1B2B77940048F08C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */,
+				22B1EE901B2B787D0048F08C /* RingLayer.swift */,
+				22B1EE921B2B78870048F08C /* ThreeRingView.swift */,
+				22B1EE941B2B789F0048F08C /* Utilities.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22B1EE671B2B74AB0048F08C /* HealthRings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22B1EE871B2B74AB0048F08C /* Build configuration list for PBXNativeTarget "HealthRings" */;
+			buildPhases = (
+				22B1EE641B2B74AB0048F08C /* Sources */,
+				22B1EE651B2B74AB0048F08C /* Frameworks */,
+				22B1EE661B2B74AB0048F08C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HealthRings;
+			productName = HealthRings;
+			productReference = 22B1EE681B2B74AB0048F08C /* HealthRings.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22B1EE7C1B2B74AB0048F08C /* HealthRingsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22B1EE8A1B2B74AB0048F08C /* Build configuration list for PBXNativeTarget "HealthRingsTests" */;
+			buildPhases = (
+				22B1EE791B2B74AB0048F08C /* Sources */,
+				22B1EE7A1B2B74AB0048F08C /* Frameworks */,
+				22B1EE7B1B2B74AB0048F08C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22B1EE7F1B2B74AB0048F08C /* PBXTargetDependency */,
+			);
+			name = HealthRingsTests;
+			productName = HealthRingsTests;
+			productReference = 22B1EE7D1B2B74AB0048F08C /* HealthRingsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22B1EE601B2B74AB0048F08C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Razeware;
+				TargetAttributes = {
+					22B1EE671B2B74AB0048F08C = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					22B1EE7C1B2B74AB0048F08C = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 22B1EE671B2B74AB0048F08C;
+					};
+				};
+			};
+			buildConfigurationList = 22B1EE631B2B74AB0048F08C /* Build configuration list for PBXProject "HealthRings" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22B1EE5F1B2B74AB0048F08C;
+			productRefGroup = 22B1EE691B2B74AB0048F08C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22B1EE671B2B74AB0048F08C /* HealthRings */,
+				22B1EE7C1B2B74AB0048F08C /* HealthRingsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22B1EE661B2B74AB0048F08C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B1EE731B2B74AB0048F08C /* Main.storyboard in Resources */,
+				22B1EE781B2B74AB0048F08C /* LaunchScreen.xib in Resources */,
+				22B1EE751B2B74AB0048F08C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B1EE7B1B2B74AB0048F08C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22B1EE641B2B74AB0048F08C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B1EE701B2B74AB0048F08C /* ViewController.swift in Sources */,
+				22B1EE951B2B789F0048F08C /* Utilities.swift in Sources */,
+				22B1EE6E1B2B74AB0048F08C /* AppDelegate.swift in Sources */,
+				22B1EE931B2B78870048F08C /* ThreeRingView.swift in Sources */,
+				22B1EE8F1B2B77D90048F08C /* CircularGradient.swift in Sources */,
+				22B1EE911B2B787D0048F08C /* RingLayer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22B1EE791B2B74AB0048F08C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B1EE841B2B74AB0048F08C /* HealthRingsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22B1EE7F1B2B74AB0048F08C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22B1EE671B2B74AB0048F08C /* HealthRings */;
+			targetProxy = 22B1EE7E1B2B74AB0048F08C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		22B1EE711B2B74AB0048F08C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22B1EE721B2B74AB0048F08C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22B1EE761B2B74AB0048F08C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22B1EE771B2B74AB0048F08C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22B1EE851B2B74AB0048F08C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22B1EE861B2B74AB0048F08C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22B1EE881B2B74AB0048F08C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HealthRings/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		22B1EE891B2B74AB0048F08C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HealthRings/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		22B1EE8B1B2B74AB0048F08C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HealthRingsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthRings.app/HealthRings";
+			};
+			name = Debug;
+		};
+		22B1EE8C1B2B74AB0048F08C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HealthRingsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthRings.app/HealthRings";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22B1EE631B2B74AB0048F08C /* Build configuration list for PBXProject "HealthRings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B1EE851B2B74AB0048F08C /* Debug */,
+				22B1EE861B2B74AB0048F08C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22B1EE871B2B74AB0048F08C /* Build configuration list for PBXNativeTarget "HealthRings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B1EE881B2B74AB0048F08C /* Debug */,
+				22B1EE891B2B74AB0048F08C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		22B1EE8A1B2B74AB0048F08C /* Build configuration list for PBXNativeTarget "HealthRingsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B1EE8B1B2B74AB0048F08C /* Debug */,
+				22B1EE8C1B2B74AB0048F08C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22B1EE601B2B74AB0048F08C /* Project object */;
+}
