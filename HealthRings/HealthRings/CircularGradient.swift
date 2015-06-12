@@ -11,10 +11,10 @@ public class CircularGradientFilter : CIFilter {
   public var outputSize: CGSize!
   public var colours: (CIColor, CIColor)!
   
-  override public var outputImage : CIImage! {
+  override public var outputImage : CIImage {
     let dod = CGRect(origin: CGPoint.zeroPoint, size: outputSize)
     let args = [ colours.0 as AnyObject, colours.1 as AnyObject, outputSize.width, outputSize.height]
-    return kernel.applyWithExtent(dod, arguments: args)
+    return kernel.applyWithExtent(dod, arguments: args)!
   }
   
   private func createKernel() -> CIColorKernel {
@@ -26,7 +26,7 @@ public class CircularGradientFilter : CIFilter {
       "  float prop = atan(y, x) / (3.1415926535897932 * 2.0) + 0.5;\n" +
       "  return c1 * prop + c2 * (1.0 - prop);\n" +
     "}"
-    return CIColorKernel(string: kernelString)
+    return CIColorKernel(string: kernelString)!
   }
 }
 
@@ -37,17 +37,17 @@ public class CircularGradientLayer : CALayer {
   private let gradientFilter = CircularGradientFilter()
   private let ciContext = CIContext(options: [ kCIContextUseSoftwareRenderer : false ])
   
-  public override init!() {
+  public override init() {
     super.init()
     needsDisplayOnBoundsChange = true
   }
   
-  public required init(coder aDecoder: NSCoder) {
+  public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     needsDisplayOnBoundsChange = true
   }
   
-  override init!(layer: AnyObject!) {
+  override init(layer: AnyObject) {
     super.init(layer: layer)
     needsDisplayOnBoundsChange = true
     if let layer = layer as? CircularGradientLayer {
@@ -61,7 +61,7 @@ public class CircularGradientLayer : CALayer {
     }
   }
   
-  public override func drawInContext(ctx: CGContext!) {
+  public override func drawInContext(ctx: CGContext) {
     super.drawInContext(ctx)
     gradientFilter.outputSize = bounds.size
     gradientFilter.colours = (CIColor(CGColor: colours.0), CIColor(CGColor: colours.1))
