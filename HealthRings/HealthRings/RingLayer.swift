@@ -11,7 +11,11 @@ import UIKit
 
 class RingLayer : CALayer {
   private let backgroundLayer = CAShapeLayer()
-  private let gradientLayer = CircularGradientLayer()
+  private lazy var gradientLayer : CircularGradientLayer = {
+    let gradLayer = CircularGradientLayer()
+    gradLayer.setValue(M_PI, forKeyPath: "transform.rotation.z")
+    return gradLayer
+  }()
   private let tipLayer = CAShapeLayer()
   private let foregroundLayer = CALayer()
   private let foregroundMaskLayer = CAShapeLayer()
@@ -26,7 +30,7 @@ class RingLayer : CALayer {
   var proportionComplete: CGFloat = 0.7 {
     didSet {
       // Need to animate this change
-      animateToProportion(proportionComplete)
+      animateFromProportion(oldValue, toProportion: proportionComplete)
     }
   }
   var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.blackColor().CGColor) {
@@ -123,27 +127,54 @@ class RingLayer : CALayer {
     shadowLayer.mask = shadowMaskLayer
   }
   
-  func animateToProportion(proportion: CGFloat) {
-    let startAngle = CGFloat(-M_PI_2)
-    let endAngle = CGFloat(proportion * 2.0 * CGFloat(M_PI) + startAngle)
+  func animateFromProportion(fromProportion: CGFloat, toProportion: CGFloat) {
+    let startAngle = CGFloat(fromProportion * 2.0 * CGFloat(M_PI) + CGFloat(-M_PI_2))
+    let endAngle = CGFloat(toProportion * 2.0 * CGFloat(M_PI) + CGFloat(-M_PI_2))
+    let angleDiff = endAngle - startAngle
     
     CATransaction.begin()
+    CATransaction.setDisableActions(true)
     CATransaction.setAnimationDuration(5.0)
+    CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+    
+    tipLayer.addAnimation(rotationForLayer(tipLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
+    shadowLayer.addAnimation(rotationForLayer(shadowLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
+    gradientLayer.addAnimation(rotationForLayer(gradientLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
+    
     tipLayer.transform = CATransform3DMakeRotation(endAngle, 0, 0, 1)
-    gradientLayer.transform = CATransform3DMakeRotation(endAngle + CGFloat(M_PI), 0, 0, 1)
     shadowLayer.transform = CATransform3DMakeRotation(endAngle, 0, 0, 1)
-    CATransaction.begin()
-    CATransaction.disableActions()
+    gradientLayer.transform = CATransform3DMakeRotation(endAngle + CGFloat(M_PI), 0, 0, 1)
+    
     // Change the path
     let center = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
     let radius = (min(bounds.width, bounds.height) - ringWidth) / 2.0
-    let foregroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-    foregroundMaskLayer.path = foregroundPath.CGPath
-    foregroundMaskLayer.strokeEnd = 0.5
     
-    CATransaction.commit()
+    let foregroundPath : UIBezierPath
+    let preAnimStrokeEnd : CGFloat
+    let postAnimStrokeEnd : CGFloat
+    if angleDiff > 0 {
+      foregroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(-M_PI_2), endAngle: endAngle, clockwise: true)
+      foregroundMaskLayer.path = foregroundPath.CGPath
+      postAnimStrokeEnd = 1.0
+      preAnimStrokeEnd = fromProportion / toProportion
+    } else {
+      preAnimStrokeEnd = 1.0
+      postAnimStrokeEnd = toProportion / fromProportion
+      CATransaction.setCompletionBlock {
+        let foregroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(-M_PI_2), endAngle: endAngle, clockwise: true)
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        self.foregroundMaskLayer.path = foregroundPath.CGPath
+        self.foregroundMaskLayer.strokeEnd = 1.0
+        CATransaction.commit()
+      }
+    }
     
-    foregroundMaskLayer.strokeEnd = 1.0
+    foregroundMaskLayer.strokeEnd = postAnimStrokeEnd
+    let strokeAnim = CABasicAnimation(keyPath: "strokeEnd")
+    strokeAnim.fromValue = preAnimStrokeEnd
+    strokeAnim.toValue = postAnimStrokeEnd
+    foregroundMaskLayer.addAnimation(strokeAnim, forKey: "strokeEnd")
     
     CATransaction.commit()
   }

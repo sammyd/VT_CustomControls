@@ -2,6 +2,14 @@ import UIKit
 import CoreImage
 import XCPlayground
 
+let layer = CALayer()
+layer.transform
+layer.setValue(0.4, forKeyPath: "transform.rotation.z")
+layer.transform
+layer.valueForKeyPath("transform.rotation.z")
+
+
+/*
 public class CircularGradientFilter : CIFilter {
   
   private var kernel: CIColorKernel {
@@ -299,7 +307,7 @@ let view = ThreeRingView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 XCPShowView("rings", view)
 
 view.propFilled = [0.8, 1.2, 1.5]
-
+*/
 
 
 
