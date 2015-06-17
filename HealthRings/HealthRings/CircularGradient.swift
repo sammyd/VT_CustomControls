@@ -3,15 +3,15 @@ import UIKit
 
 
 
-public class CircularGradientFilter : CIFilter {
+class CircularGradientFilter : CIFilter {
   
   private var kernel: CIColorKernel {
     return createKernel()
   }
-  public var outputSize: CGSize!
-  public var colours: (CIColor, CIColor)!
+  var outputSize: CGSize!
+  var colours: (CIColor, CIColor)!
   
-  override public var outputImage : CIImage {
+  override var outputImage : CIImage {
     let dod = CGRect(origin: CGPoint.zeroPoint, size: outputSize)
     let args = [ colours.0 as AnyObject, colours.1 as AnyObject, outputSize.width, outputSize.height]
     return kernel.applyWithExtent(dod, arguments: args)!

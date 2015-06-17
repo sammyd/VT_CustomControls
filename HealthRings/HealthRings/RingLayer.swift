@@ -16,14 +16,13 @@ class RingLayer : CALayer {
     gradLayer.setValue(M_PI, forKeyPath: "transform.rotation.z")
     return gradLayer
   }()
-  private let tipLayer = CAShapeLayer()
+  private let tipLayer = ShadowTip()
   private let foregroundLayer = CALayer()
   private let foregroundMaskLayer = CAShapeLayer()
-  private let shadowLayer     = CAShapeLayer()
-  private let shadowMaskLayer = CAShapeLayer()
   
   var ringWidth: CGFloat = 20.0 {
     didSet {
+      tipLayer.ringWidth = ringWidth
       prepareSubLayers()
     }
   }
@@ -36,7 +35,7 @@ class RingLayer : CALayer {
   var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.blackColor().CGColor) {
     didSet {
       gradientLayer.colours = ringColors
-      tipLayer.strokeColor = ringColors.0
+      tipLayer.color = ringColors.0
     }
   }
   var ringBackgroundColor: CGColorRef = UIColor.darkGrayColor().CGColor {
@@ -55,15 +54,14 @@ class RingLayer : CALayer {
     let center = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
     let radius = (min(bounds.width, bounds.height) - ringWidth) / 2.0
     let startAngle = CGFloat(-M_PI_2)
-    let endAngle = CGFloat(proportionComplete * 2.0 * CGFloat(M_PI) + startAngle)
     
-    for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer, shadowLayer, shadowMaskLayer] {
+    for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer ] {
       layer.bounds = bounds
       layer.position = center
     }
     
     // Add them to the hierarchy
-    for layer in [backgroundLayer, foregroundLayer, shadowLayer] {
+    for layer in [backgroundLayer, foregroundLayer, tipLayer] {
       if layer.superlayer == nil {
         addSublayer(layer)
       }
@@ -71,33 +69,18 @@ class RingLayer : CALayer {
     
     if proportionComplete < 0.02 {
       foregroundLayer.removeFromSuperlayer()
-      shadowLayer.removeFromSuperlayer()
+      tipLayer.removeFromSuperlayer()
       return
     }
     
     // Prepare the paths
     let backgroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: startAngle + CGFloat(2.0 * M_PI), clockwise: true)
-    let foregroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-    let ringTipPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -0.1, endAngle: 0, clockwise: true)
-    let shadowMaskPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -0.1, endAngle: 0.5, clockwise: true)
-    
-    let cgRingTipPath = CGPathCreateCopyByStrokingPath(ringTipPath.CGPath, nil, ringWidth, kCGLineCapRound, kCGLineJoinRound, 10.0)
-    let cgShadowMaskPath = CGPathCreateCopyByStrokingPath(shadowMaskPath.CGPath, nil, ringWidth, kCGLineCapRound, kCGLineJoinRound, 10.0)
-    let completedShadowPath = CGPathCreateMutable()
-    CGPathAddPath(completedShadowPath, nil, cgRingTipPath)
-    CGPathAddPath(completedShadowPath, nil, cgShadowMaskPath)
     
     // Prepare the layers
     backgroundLayer.path = backgroundPath.CGPath
     backgroundLayer.strokeColor = ringBackgroundColor
     backgroundLayer.lineWidth = ringWidth
     backgroundLayer.fillColor = nil
-    
-    tipLayer.path = ringTipPath.CGPath
-    tipLayer.lineCap = kCALineCapRound
-    tipLayer.strokeColor = ringColors.0
-    tipLayer.lineWidth = ringWidth
-    tipLayer.fillColor = nil
     
     //foregroundMaskLayer.path = foregroundPath.CGPath
     foregroundMaskLayer.lineCap = kCALineCapRound
@@ -109,22 +92,6 @@ class RingLayer : CALayer {
     foregroundLayer.addSublayer(gradientLayer)
     foregroundLayer.addSublayer(tipLayer)
     gradientLayer.colours = ringColors
-    
-    shadowMaskLayer.path = completedShadowPath
-    shadowMaskLayer.strokeColor = nil
-    shadowMaskLayer.fillColor = UIColor.blackColor().CGColor
-    shadowMaskLayer.fillRule = kCAFillRuleEvenOdd
-    
-    shadowLayer.path = ringTipPath.CGPath
-    shadowLayer.fillColor = nil
-    shadowLayer.strokeColor = UIColor.blackColor().CGColor
-    shadowLayer.lineWidth = ringWidth
-    shadowLayer.shadowColor = UIColor.blackColor().CGColor
-    shadowLayer.shadowOffset = CGSize.zeroSize
-    shadowLayer.shadowRadius = 12.0
-    shadowLayer.shadowOpacity = 1.0
-    shadowLayer.lineCap = kCALineCapRound
-    shadowLayer.mask = shadowMaskLayer
   }
   
   func animateFromProportion(fromProportion: CGFloat, toProportion: CGFloat) {
@@ -138,11 +105,9 @@ class RingLayer : CALayer {
     CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
     
     tipLayer.addAnimation(rotationForLayer(tipLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
-    shadowLayer.addAnimation(rotationForLayer(shadowLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
     gradientLayer.addAnimation(rotationForLayer(gradientLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
     
     tipLayer.transform = CATransform3DMakeRotation(endAngle, 0, 0, 1)
-    shadowLayer.transform = CATransform3DMakeRotation(endAngle, 0, 0, 1)
     gradientLayer.transform = CATransform3DMakeRotation(endAngle + CGFloat(M_PI), 0, 0, 1)
     
     // Change the path
