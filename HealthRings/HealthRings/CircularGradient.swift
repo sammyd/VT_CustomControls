@@ -2,12 +2,12 @@ import CoreImage
 import UIKit
 
 
-
-class CircularGradientFilter : CIFilter {
+private class CircularGradientFilter : CIFilter {
   
-  private var kernel: CIColorKernel {
-    return createKernel()
-  }
+  private lazy var kernel: CIColorKernel  = {
+    return self.createKernel()
+  }()
+  
   var outputSize: CGSize!
   var colours: (CIColor, CIColor)!
   
@@ -29,7 +29,6 @@ class CircularGradientFilter : CIFilter {
     return CIColorKernel(string: kernelString)!
   }
 }
-
 
 
 

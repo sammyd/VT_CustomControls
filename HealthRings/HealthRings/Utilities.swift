@@ -19,3 +19,15 @@ public extension UIColor {
   }
 }
 
+public extension CGColorRef {
+  public var darkerColor : CGColorRef {
+    let uiColor = UIColor(CGColor: self)
+    return uiColor.darkerColor.CGColor
+  }
+}
+
+public extension CALayer {
+  public var center : CGPoint {
+    return CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
+  }
+}

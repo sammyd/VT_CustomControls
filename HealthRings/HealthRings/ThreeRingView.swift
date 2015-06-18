@@ -70,7 +70,7 @@ class ThreeRingView : UIView {
   
   private func setRingProportions() {
     for (ring, proportion) in zip(rings, propFilled) {
-      ring.proportionComplete = proportion
+      ring.value = proportion
     }
   }
 }

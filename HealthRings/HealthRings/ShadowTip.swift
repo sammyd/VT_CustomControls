@@ -29,10 +29,6 @@ class ShadowTip : CALayer {
     }()
   
   //MARK:- Utility Properties
-  private var center : CGPoint {
-    return CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
-  }
-  
   private var radius : CGFloat {
     return (min(bounds.width, bounds.height) - ringWidth) / 2.0
   }
@@ -83,7 +79,7 @@ class ShadowTip : CALayer {
   override func layoutSublayers() {
     for layer in [tipLayer, shadowLayer, shadowMaskLayer] {
       layer.bounds = bounds
-      layer.position = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
+      layer.position = center
     }
     preparePaths()
   }

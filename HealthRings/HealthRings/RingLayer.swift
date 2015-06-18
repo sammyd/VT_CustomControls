@@ -10,26 +10,65 @@ import UIKit
 
 
 class RingLayer : CALayer {
-  private let backgroundLayer = CAShapeLayer()
+  //:- Private sublayer properties
+  private lazy var backgroundLayer : CAShapeLayer = {
+    let layer = CAShapeLayer()
+    layer.strokeColor = self.ringBackgroundColor
+    layer.lineWidth = self.ringWidth
+    layer.fillColor = nil
+    return layer
+  }()
+  
   private lazy var gradientLayer : CircularGradientLayer = {
     let gradLayer = CircularGradientLayer()
     gradLayer.setValue(M_PI, forKeyPath: "transform.rotation.z")
+    gradLayer.colours = self.ringColors
     return gradLayer
   }()
-  private let tipLayer = ShadowTip()
-  private let foregroundLayer = CALayer()
-  private let foregroundMaskLayer = CAShapeLayer()
   
+  private let tipLayer = ShadowTip()
+  
+  private lazy var foregroundLayer : CALayer = {
+    let layer = CALayer()
+    layer.mask = self.foregroundMaskLayer
+    layer.addSublayer(self.gradientLayer)
+    layer.addSublayer(self.tipLayer)
+    return layer
+  }()
+  
+  private lazy var foregroundMaskLayer : CAShapeLayer = {
+    let layer = CAShapeLayer()
+    layer.lineCap = kCALineCapRound
+    layer.lineWidth = self.ringWidth
+    layer.fillColor = nil
+    layer.strokeColor = UIColor.blackColor().CGColor
+    return layer
+  }()
+  
+  //:- Utility Properties
+  private var radius : CGFloat {
+    return (min(bounds.width, bounds.height) - ringWidth) / 2.0
+  }
+  
+  private let angleOffsetForZero = CGFloat(-M_PI_2)
+  
+  private var backgroundRingPath : CGPathRef {
+    return UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(2.0 * M_PI), clockwise: true).CGPath
+  }
+
+  //:- Public API
   var ringWidth: CGFloat = 20.0 {
     didSet {
       tipLayer.ringWidth = ringWidth
-      prepareSubLayers()
+      backgroundLayer.lineWidth = ringWidth
+      foregroundMaskLayer.lineWidth = ringWidth
+      preparePaths()
     }
   }
-  var proportionComplete: CGFloat = 0.7 {
+  var value: CGFloat = 0.7 {
     didSet {
       // Need to animate this change
-      animateFromProportion(oldValue, toProportion: proportionComplete)
+      changeValueFrom(oldValue, toValue: value, animated: animationEnabled)
     }
   }
   var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.blackColor().CGColor) {
@@ -43,103 +82,89 @@ class RingLayer : CALayer {
       backgroundLayer.strokeColor = ringBackgroundColor
     }
   }
+  var animationEnabled = true
+  var animationDuration = 5.0
   
-  override func layoutSublayers() {
-    super.layoutSublayers()
-    prepareSubLayers()
+  //:- Initialisation
+  override init() {
+    super.init()
+    sharedInitialization()
   }
   
-  private func prepareSubLayers() {
-    // Prepare some useful constants
-    let center = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
-    let radius = (min(bounds.width, bounds.height) - ringWidth) / 2.0
-    let startAngle = CGFloat(-M_PI_2)
-    
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    sharedInitialization()
+  }
+  
+  private func sharedInitialization() {
+    // Add the sublayers to the hierarchy
+    for layer in [backgroundLayer, foregroundLayer, tipLayer] {
+      addSublayer(layer)
+    }
+  }
+  
+  //:- Lifecycle overrides
+  override func layoutSublayers() {
+    super.layoutSublayers()
+    // Resize the sublayers
     for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer ] {
       layer.bounds = bounds
       layer.position = center
     }
-    
-    // Add them to the hierarchy
-    for layer in [backgroundLayer, foregroundLayer, tipLayer] {
-      if layer.superlayer == nil {
-        addSublayer(layer)
-      }
-    }
-    
-    if proportionComplete < 0.02 {
-      foregroundLayer.removeFromSuperlayer()
-      tipLayer.removeFromSuperlayer()
-      return
-    }
-    
-    // Prepare the paths
-    let backgroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: startAngle + CGFloat(2.0 * M_PI), clockwise: true)
-    
-    // Prepare the layers
-    backgroundLayer.path = backgroundPath.CGPath
-    backgroundLayer.strokeColor = ringBackgroundColor
-    backgroundLayer.lineWidth = ringWidth
-    backgroundLayer.fillColor = nil
-    
-    //foregroundMaskLayer.path = foregroundPath.CGPath
-    foregroundMaskLayer.lineCap = kCALineCapRound
-    foregroundMaskLayer.lineWidth = ringWidth
-    foregroundMaskLayer.fillColor = nil
-    foregroundMaskLayer.strokeColor = UIColor.blackColor().CGColor
-    
-    foregroundLayer.mask = foregroundMaskLayer
-    foregroundLayer.addSublayer(gradientLayer)
-    foregroundLayer.addSublayer(tipLayer)
-    gradientLayer.colours = ringColors
+    preparePaths()
   }
   
-  func animateFromProportion(fromProportion: CGFloat, toProportion: CGFloat) {
-    let startAngle = CGFloat(fromProportion * 2.0 * CGFloat(M_PI) + CGFloat(-M_PI_2))
-    let endAngle = CGFloat(toProportion * 2.0 * CGFloat(M_PI) + CGFloat(-M_PI_2))
-    let angleDiff = endAngle - startAngle
+  //:- Utility Methods
+  private func preparePaths() {
+    backgroundLayer.path = backgroundRingPath
+  }
+  
+  private func changeValueFrom(fromValue: CGFloat, toValue: CGFloat, animated: Bool = true) {
+    let toAngle = CGFloat(toValue * 2.0 * CGFloat(M_PI) + angleOffsetForZero)
+    let angleDelta = CGFloat((toValue - fromValue) * 2.0 * CGFloat(M_PI))
     
     CATransaction.begin()
     CATransaction.setDisableActions(true)
-    CATransaction.setAnimationDuration(5.0)
+    if animated {
+      CATransaction.setAnimationDuration(animationDuration)
+    }
     CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
     
-    tipLayer.addAnimation(rotationForLayer(tipLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
-    gradientLayer.addAnimation(rotationForLayer(gradientLayer, byAngle: angleDiff), forKey: "transform.rotation.z")
-    
-    tipLayer.transform = CATransform3DMakeRotation(endAngle, 0, 0, 1)
-    gradientLayer.transform = CATransform3DMakeRotation(endAngle + CGFloat(M_PI), 0, 0, 1)
-    
-    // Change the path
-    let center = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
-    let radius = (min(bounds.width, bounds.height) - ringWidth) / 2.0
-    
-    let foregroundPath : UIBezierPath
-    let preAnimStrokeEnd : CGFloat
-    let postAnimStrokeEnd : CGFloat
-    if angleDiff > 0 {
-      foregroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(-M_PI_2), endAngle: endAngle, clockwise: true)
-      foregroundMaskLayer.path = foregroundPath.CGPath
-      postAnimStrokeEnd = 1.0
-      preAnimStrokeEnd = fromProportion / toProportion
-    } else {
-      preAnimStrokeEnd = 1.0
-      postAnimStrokeEnd = toProportion / fromProportion
-      CATransaction.setCompletionBlock {
-        let foregroundPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(-M_PI_2), endAngle: endAngle, clockwise: true)
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-        self.foregroundMaskLayer.path = foregroundPath.CGPath
-        self.foregroundMaskLayer.strokeEnd = 1.0
-        CATransaction.commit()
-      }
+    // Rotate the tip and the gradient
+    if animated {
+      tipLayer.addAnimation(rotationForLayer(tipLayer, byAngle: angleDelta), forKey: "transform.rotation.z")
+      gradientLayer.addAnimation(rotationForLayer(gradientLayer, byAngle: angleDelta), forKey: "transform.rotation.z")
     }
-    
-    foregroundMaskLayer.strokeEnd = postAnimStrokeEnd
-    let strokeAnim = CABasicAnimation(keyPath: "strokeEnd")
-    strokeAnim.fromValue = preAnimStrokeEnd
-    strokeAnim.toValue = postAnimStrokeEnd
-    foregroundMaskLayer.addAnimation(strokeAnim, forKey: "strokeEnd")
+    // Update model
+    tipLayer.transform = CATransform3DMakeRotation(toAngle, 0, 0, 1)
+    gradientLayer.transform = CATransform3DMakeRotation(toAngle + CGFloat(M_PI), 0, 0, 1)
+
+    // Update the foreground mask path
+    let finalMaskPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: angleOffsetForZero, endAngle: toAngle, clockwise: true)
+    if animated == false {
+      foregroundMaskLayer.path = finalMaskPath.CGPath
+    } else {
+      let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
+      if angleDelta > 0 {
+        // Need to grow the mask. Immediately create the larger path and animate strokeEnd to fill it
+        foregroundMaskLayer.path = finalMaskPath.CGPath
+        strokeAnimation.fromValue = fromValue / toValue
+        strokeAnimation.toValue = 1.0
+      } else {
+        // Mask needs to shrink. Animate down and replace mask at end of transaction
+        strokeAnimation.fromValue = 1.0
+        strokeAnimation.toValue = toValue / fromValue
+        CATransaction.setCompletionBlock {
+          // Update the mask to the new shape after the animation
+          CATransaction.begin()
+          CATransaction.setDisableActions(true)
+          self.foregroundMaskLayer.path = finalMaskPath.CGPath
+          self.foregroundMaskLayer.strokeEnd = 1.0
+          CATransaction.commit()
+        }
+      }
+      foregroundMaskLayer.addAnimation(strokeAnimation, forKey: "strokeEnd")
+    }
     
     CATransaction.commit()
   }
