@@ -107,7 +107,7 @@ class RingLayer : CALayer {
   override func layoutSublayers() {
     super.layoutSublayers()
     // Resize the sublayers
-    for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer ] {
+    for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer] {
       layer.bounds = bounds
       layer.position = center
     }
@@ -117,6 +117,8 @@ class RingLayer : CALayer {
   //:- Utility Methods
   private func preparePaths() {
     backgroundLayer.path = backgroundRingPath
+    let toAngle = CGFloat(value * 2.0 * CGFloat(M_PI) + angleOffsetForZero)
+    foregroundMaskLayer.path = UIBezierPath(arcCenter: center, radius: radius, startAngle: angleOffsetForZero, endAngle: toAngle, clockwise: true).CGPath
   }
   
   private func changeValueFrom(fromValue: CGFloat, toValue: CGFloat, animated: Bool = true) {

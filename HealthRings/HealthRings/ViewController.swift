@@ -19,7 +19,9 @@ class ViewController: UIViewController {
   }
 
   @IBAction func updateRingValues(sender: AnyObject) {
-    healthRings.propFilled = sliders.map { CGFloat($0.value) }
+    healthRings.valueInnerRing = CGFloat(sliders[0].value ?? 0)
+    healthRings.valueMiddleRing = CGFloat(sliders[1].value ?? 0)
+    healthRings.valueOuterRing = CGFloat(sliders[2].value ?? 0)
   }
 }
 

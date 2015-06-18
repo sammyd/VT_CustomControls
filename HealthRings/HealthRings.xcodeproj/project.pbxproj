@@ -68,6 +68,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2286B7CB1B330F69007D66F1 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */,
+				2286B7C91B31FDE4007D66F1 /* ShadowTip.swift */,
+				22B1EE901B2B787D0048F08C /* RingLayer.swift */,
+				2286B7C71B2B8A63007D66F1 /* RotationAnimation.swift */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
 		22B1EE5F1B2B74AB0048F08C = {
 			isa = PBXGroup;
 			children = (
@@ -128,12 +139,9 @@
 		22B1EE8D1B2B77940048F08C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */,
-				22B1EE901B2B787D0048F08C /* RingLayer.swift */,
+				2286B7CB1B330F69007D66F1 /* Layers */,
 				22B1EE921B2B78870048F08C /* ThreeRingView.swift */,
 				22B1EE941B2B789F0048F08C /* Utilities.swift */,
-				2286B7C71B2B8A63007D66F1 /* RotationAnimation.swift */,
-				2286B7C91B31FDE4007D66F1 /* ShadowTip.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
