@@ -65,12 +65,21 @@ class RingLayer : CALayer {
       preparePaths()
     }
   }
-  var value: CGFloat = 0.7 {
-    didSet {
-      // Need to animate this change
-      changeValueFrom(oldValue, toValue: value, animated: animationEnabled)
+  private var _value: CGFloat = 0.7
+  var value: CGFloat {
+    get {
+      return _value
+    }
+    set {
+      setValue(value, animated: false)
     }
   }
+  
+  func setValue(value: CGFloat, animated: Bool = false) {
+    changeValueFrom(_value, toValue: value, animated: animated)
+    _value = value
+  }
+  
   var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.blackColor().CGColor) {
     didSet {
       gradientLayer.colours = ringColors
@@ -82,7 +91,7 @@ class RingLayer : CALayer {
       backgroundLayer.strokeColor = ringBackgroundColor
     }
   }
-  var animationEnabled = true
+
   var animationDuration = 5.0
   
   //:- Initialisation
@@ -98,7 +107,6 @@ class RingLayer : CALayer {
       value = layer.value
       ringBackgroundColor = layer.ringBackgroundColor
       ringColors = layer.ringColors
-      animationEnabled = layer.animationEnabled
       animationDuration = layer.animationDuration
     }
   }

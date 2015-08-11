@@ -113,6 +113,21 @@ extension ThreeRingView {
   }
 }
 
+// MARK:- Animation of ring values
+extension ThreeRingView {
+  func setValueInnerRing(value: CGFloat, animated: Bool = false) {
+    rings[2].setValue(value, animated: animated)
+  }
+  
+  func setValueMiddleRing(value: CGFloat, animated: Bool = false) {
+    rings[1].setValue(value, animated: animated)
+  }
+  
+  func setValueOuterRing(value: CGFloat, animated: Bool = false) {
+    rings[0].setValue(value, animated: animated)
+  }
+}
+
 
 // MARK:- UIView Overrides
 extension ThreeRingView {
@@ -120,12 +135,6 @@ extension ThreeRingView {
     super.layoutSubviews()
     backgroundColor = UIColor.blackColor()
     drawLayers()
-  }
-  
-  override func prepareForInterfaceBuilder() {
-    for ring in rings {
-      ring.animationEnabled = false
-    }
   }
 }
 
