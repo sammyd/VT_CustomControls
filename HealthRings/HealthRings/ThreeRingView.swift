@@ -6,51 +6,11 @@ class ThreeRingView : UIView {
   private let rings = [RingLayer(), RingLayer(), RingLayer()]
   
   @IBInspectable
-  dynamic var colorInnerRing = UIColor(red:  33.0/255.0, green: 253.0/255.0, blue: 197.0/255.0, alpha: 1.0) {
-    didSet {
-      setColor(colorInnerRing, ofRing: rings[2])
-    }
-  }
-  @IBInspectable
-  var colorMiddleRing = UIColor(red: 158.0/255.0, green: 255.0/255.0, blue:   9.0/255.0, alpha: 1.0) {
-    didSet {
-      setColor(colorMiddleRing, ofRing: rings[1])
-    }
-  }
-  @IBInspectable
-  var colorOuterRing = UIColor(red: 251.0/255.0, green:  12.0/255.0, blue: 116.0/255.0, alpha: 1.0) {
-    didSet {
-      setColor(colorOuterRing, ofRing: rings[0])
-    }
-  }
-  
-  @IBInspectable
   var ringBackgroundColor = UIColor(white: 0.15, alpha: 1.0) {
     didSet {
       for ring in rings {
         ring.ringBackgroundColor = ringBackgroundColor.CGColor
       }
-    }
-  }
-  
-  @IBInspectable
-  dynamic var valueInnerRing : CGFloat = 1.75 {
-    didSet {
-      rings[2].value = valueInnerRing
-    }
-  }
-  
-  @IBInspectable
-  var valueMiddleRing : CGFloat = 1.08 {
-    didSet {
-      rings[1].value = valueMiddleRing
-    }
-  }
-  
-  @IBInspectable
-  var valueOuterRing : CGFloat = 1.35 {
-    didSet {
-      rings[0].value = valueOuterRing
     }
   }
   
@@ -80,24 +40,82 @@ class ThreeRingView : UIView {
     super.init(frame: frame)
     sharedInitialization()
   }
-  
-  private func sharedInitialization() {
-    for ring in rings {
-      layer.addSublayer(ring)
-      ring.ringBackgroundColor = ringBackgroundColor.CGColor
-      ring.ringWidth = ringWidth
+}
+
+// MARK:- Ring colors
+extension ThreeRingView {
+  @IBInspectable
+  var colorInnerRing : UIColor {
+    set {
+      setColor(colorInnerRing, ofRing: rings[2])
     }
-    
-    // Set the default values
-    for (color, ring) in zip([colorOuterRing, colorMiddleRing, colorInnerRing], rings) {
-      setColor(color, ofRing: ring)
-    }
-    
-    for (value, ring) in zip([valueOuterRing, valueMiddleRing, valueInnerRing], rings) {
-      ring.value = value
+    get {
+      return UIColor(CGColor: rings[2].ringColors.0)
     }
   }
   
+  @IBInspectable
+  var colorMiddleRing : UIColor {
+    set {
+      setColor(colorMiddleRing, ofRing: rings[1])
+    }
+    get {
+      return UIColor(CGColor: rings[1].ringColors.0)
+    }
+  }
+  
+  @IBInspectable
+  var colorOuterRing : UIColor {
+    set {
+      setColor(colorOuterRing, ofRing: rings[0])
+    }
+    get {
+      return UIColor(CGColor: rings[0].ringColors.0)
+    }
+  }
+  
+  private func setColor(color: UIColor, ofRing ring: RingLayer) {
+    ring.ringColors = (color.CGColor, color.darkerColor.CGColor)
+  }
+}
+
+
+// MARK:- Ring values
+extension ThreeRingView {
+  @IBInspectable
+  var valueInnerRing : CGFloat {
+    set {
+      rings[2].value = valueInnerRing
+    }
+    get {
+      return rings[2].value
+    }
+  }
+  
+  @IBInspectable
+  var valueMiddleRing : CGFloat {
+    set {
+      rings[1].value = valueMiddleRing
+    }
+    get {
+      return rings[1].value
+    }
+  }
+  
+  @IBInspectable
+  var valueOuterRing : CGFloat {
+    set {
+      rings[0].value = valueOuterRing
+    }
+    get {
+      return rings[0].value
+    }
+  }
+}
+
+
+// MARK:- UIView Overrides
+extension ThreeRingView {
   override func layoutSubviews() {
     super.layoutSubviews()
     backgroundColor = UIColor.blackColor()
@@ -107,6 +125,23 @@ class ThreeRingView : UIView {
   override func prepareForInterfaceBuilder() {
     for ring in rings {
       ring.animationEnabled = false
+    }
+  }
+}
+
+// MARK:- Layout
+extension ThreeRingView {
+  private func sharedInitialization() {
+    for ring in rings {
+      layer.addSublayer(ring)
+      ring.ringBackgroundColor = ringBackgroundColor.CGColor
+      ring.ringWidth = ringWidth
+    }
+    
+    // Set the default values
+    for (color, ring) in zip([UIColor.hrPinkColor, UIColor.hrGreenColor, UIColor.hrBlueColor], rings) {
+      setColor(color, ofRing: ring)
+      ring.value = 0.0
     }
   }
   
@@ -120,9 +155,5 @@ class ThreeRingView : UIView {
       ring.position = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
     }
   }
-  
-  private func setColor(color: UIColor, ofRing ring: RingLayer) {
-    ring.ringColors = (color.CGColor, color.darkerColor.CGColor)
-  }
-
 }
+
