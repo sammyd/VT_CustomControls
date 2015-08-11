@@ -14,22 +14,11 @@
 		22B1EE731B2B74AB0048F08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B1EE711B2B74AB0048F08C /* Main.storyboard */; };
 		22B1EE751B2B74AB0048F08C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B1EE741B2B74AB0048F08C /* Images.xcassets */; };
 		22B1EE781B2B74AB0048F08C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1EE761B2B74AB0048F08C /* LaunchScreen.xib */; };
-		22B1EE841B2B74AB0048F08C /* HealthRingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE831B2B74AB0048F08C /* HealthRingsTests.swift */; };
 		22B1EE8F1B2B77D90048F08C /* CircularGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */; };
 		22B1EE911B2B787D0048F08C /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE901B2B787D0048F08C /* RingLayer.swift */; };
 		22B1EE931B2B78870048F08C /* ThreeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE921B2B78870048F08C /* ThreeRingView.swift */; };
 		22B1EE951B2B789F0048F08C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE941B2B789F0048F08C /* Utilities.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		22B1EE7E1B2B74AB0048F08C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 22B1EE601B2B74AB0048F08C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 22B1EE671B2B74AB0048F08C;
-			remoteInfo = HealthRings;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2286B7C71B2B8A63007D66F1 /* RotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationAnimation.swift; sourceTree = "<group>"; };
@@ -41,9 +30,6 @@
 		22B1EE721B2B74AB0048F08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22B1EE741B2B74AB0048F08C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22B1EE771B2B74AB0048F08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		22B1EE7D1B2B74AB0048F08C /* HealthRingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthRingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22B1EE821B2B74AB0048F08C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22B1EE831B2B74AB0048F08C /* HealthRingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRingsTests.swift; sourceTree = "<group>"; };
 		22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularGradient.swift; sourceTree = "<group>"; };
 		22B1EE901B2B787D0048F08C /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
 		22B1EE921B2B78870048F08C /* ThreeRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeRingView.swift; sourceTree = "<group>"; };
@@ -52,13 +38,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		22B1EE651B2B74AB0048F08C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		22B1EE7A1B2B74AB0048F08C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -83,7 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				22B1EE6A1B2B74AB0048F08C /* HealthRings */,
-				22B1EE801B2B74AB0048F08C /* HealthRingsTests */,
 				22B1EE691B2B74AB0048F08C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				22B1EE681B2B74AB0048F08C /* HealthRings.app */,
-				22B1EE7D1B2B74AB0048F08C /* HealthRingsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,23 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				22B1EE6C1B2B74AB0048F08C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		22B1EE801B2B74AB0048F08C /* HealthRingsTests */ = {
-			isa = PBXGroup;
-			children = (
-				22B1EE831B2B74AB0048F08C /* HealthRingsTests.swift */,
-				22B1EE811B2B74AB0048F08C /* Supporting Files */,
-			);
-			path = HealthRingsTests;
-			sourceTree = "<group>";
-		};
-		22B1EE811B2B74AB0048F08C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				22B1EE821B2B74AB0048F08C /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -166,24 +126,6 @@
 			productReference = 22B1EE681B2B74AB0048F08C /* HealthRings.app */;
 			productType = "com.apple.product-type.application";
 		};
-		22B1EE7C1B2B74AB0048F08C /* HealthRingsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 22B1EE8A1B2B74AB0048F08C /* Build configuration list for PBXNativeTarget "HealthRingsTests" */;
-			buildPhases = (
-				22B1EE791B2B74AB0048F08C /* Sources */,
-				22B1EE7A1B2B74AB0048F08C /* Frameworks */,
-				22B1EE7B1B2B74AB0048F08C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				22B1EE7F1B2B74AB0048F08C /* PBXTargetDependency */,
-			);
-			name = HealthRingsTests;
-			productName = HealthRingsTests;
-			productReference = 22B1EE7D1B2B74AB0048F08C /* HealthRingsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -196,10 +138,6 @@
 				TargetAttributes = {
 					22B1EE671B2B74AB0048F08C = {
 						CreatedOnToolsVersion = 6.3.2;
-					};
-					22B1EE7C1B2B74AB0048F08C = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 22B1EE671B2B74AB0048F08C;
 					};
 				};
 			};
@@ -217,7 +155,6 @@
 			projectRoot = "";
 			targets = (
 				22B1EE671B2B74AB0048F08C /* HealthRings */,
-				22B1EE7C1B2B74AB0048F08C /* HealthRingsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,13 +167,6 @@
 				22B1EE731B2B74AB0048F08C /* Main.storyboard in Resources */,
 				22B1EE781B2B74AB0048F08C /* LaunchScreen.xib in Resources */,
 				22B1EE751B2B74AB0048F08C /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		22B1EE7B1B2B74AB0048F08C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,23 +188,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22B1EE791B2B74AB0048F08C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22B1EE841B2B74AB0048F08C /* HealthRingsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		22B1EE7F1B2B74AB0048F08C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 22B1EE671B2B74AB0048F08C /* HealthRings */;
-			targetProxy = 22B1EE7E1B2B74AB0048F08C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		22B1EE711B2B74AB0048F08C /* Main.storyboard */ = {
@@ -333,7 +247,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -372,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -404,42 +318,6 @@
 			};
 			name = Release;
 		};
-		22B1EE8B1B2B74AB0048F08C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HealthRingsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthRings.app/HealthRings";
-			};
-			name = Debug;
-		};
-		22B1EE8C1B2B74AB0048F08C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HealthRingsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthRings.app/HealthRings";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -457,15 +335,6 @@
 			buildConfigurations = (
 				22B1EE881B2B74AB0048F08C /* Debug */,
 				22B1EE891B2B74AB0048F08C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		22B1EE8A1B2B74AB0048F08C /* Build configuration list for PBXNativeTarget "HealthRingsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				22B1EE8B1B2B74AB0048F08C /* Debug */,
-				22B1EE8C1B2B74AB0048F08C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
