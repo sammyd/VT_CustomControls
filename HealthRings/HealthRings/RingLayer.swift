@@ -106,12 +106,14 @@ class RingLayer : CALayer {
   //:- Lifecycle overrides
   override func layoutSublayers() {
     super.layoutSublayers()
-    // Resize the sublayers
-    for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer] {
-      layer.bounds = bounds
-      layer.position = center
+    if gradientLayer.bounds != bounds {
+      // Resize the sublayers
+      for layer in [gradientLayer, tipLayer, backgroundLayer, foregroundLayer, foregroundMaskLayer] {
+        layer.bounds = bounds
+        layer.position = center
+      }
+      preparePaths()
     }
-    preparePaths()
   }
   
   //:- Utility Methods
@@ -145,7 +147,7 @@ class RingLayer : CALayer {
 
     // Update the foreground mask path
     let finalMaskPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: angleOffsetForZero, endAngle: toAngle, clockwise: true)
-    if animated == false {
+    if !animated {
       foregroundMaskLayer.path = finalMaskPath.CGPath
     } else {
       let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
