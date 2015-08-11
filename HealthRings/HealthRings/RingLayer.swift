@@ -122,6 +122,8 @@ class RingLayer : CALayer {
   }
   
   private func changeValueFrom(fromValue: CGFloat, toValue: CGFloat, animated: Bool = true) {
+    guard abs(fromValue - toValue) > 0.01 else { return }
+    
     let toAngle = CGFloat(toValue * 2.0 * CGFloat(M_PI) + angleOffsetForZero)
     let angleDelta = CGFloat((toValue - fromValue) * 2.0 * CGFloat(M_PI))
     
