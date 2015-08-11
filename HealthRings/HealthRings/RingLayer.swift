@@ -91,6 +91,18 @@ class RingLayer : CALayer {
     sharedInitialization()
   }
   
+  override init(layer: AnyObject) {
+    super.init(layer: layer)
+    if let layer = layer as? RingLayer {
+      ringWidth = layer.ringWidth
+      value = layer.value
+      ringBackgroundColor = layer.ringBackgroundColor
+      ringColors = layer.ringColors
+      animationEnabled = layer.animationEnabled
+      animationDuration = layer.animationDuration
+    }
+  }
+  
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     sharedInitialization()
