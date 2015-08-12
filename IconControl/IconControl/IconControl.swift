@@ -20,6 +20,7 @@ class IconControl : UIControl {
   private var label : UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.systemFontOfSize(30.0, weight: UIFontWeightLight)
     return label
   }()
   
@@ -35,6 +36,10 @@ class IconControl : UIControl {
     super.init(coder: aDecoder)
     sharedInitialization()
   }
+  
+  override func tintColorDidChange() {
+    label.textColor = tintColor
+  }
 }
 
 
@@ -46,7 +51,7 @@ extension IconControl {
       return imageView.image
     }
     set(newImage) {
-      imageView.image = newImage
+      imageView.image = newImage?.imageWithRenderingMode(.AlwaysTemplate)
     }
   }
   
@@ -59,25 +64,39 @@ extension IconControl {
       label.text = newText
     }
   }
+  
+  @IBInspectable
+  var spacing: CGFloat {
+    get {
+      return stackView.spacing
+    }
+    set(newSpacing) {
+      stackView.spacing = newSpacing
+    }
+  }
 }
 
 
 extension IconControl {
   private func sharedInitialization() {
+    label.textColor = tintColor
     stackView = UIStackView(arrangedSubviews: [imageView, label])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .Horizontal
     stackView.alignment = .Center
     addSubview(stackView)
     
+    
     NSLayoutConstraint.activateConstraints(
       [
-        stackView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
-        stackView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
-        stackView.topAnchor.constraintEqualToAnchor(topAnchor),
-        stackView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
+        stackView.leadingAnchor.constraintEqualToAnchor(layoutMarginsGuide.leadingAnchor),
+        stackView.trailingAnchor.constraintEqualToAnchor(layoutMarginsGuide.trailingAnchor),
+        stackView.topAnchor.constraintEqualToAnchor(layoutMarginsGuide.topAnchor),
+        stackView.bottomAnchor.constraintEqualToAnchor(layoutMarginsGuide.bottomAnchor)
       ]
     )
+    
+    layer.cornerRadius = 10
   }
 }
 
