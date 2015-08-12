@@ -23,9 +23,12 @@ class ViewController: UIViewController {
     print("Icon Tapped!")
   }
   
-  
-  @IBAction func buttonResponder(sender: UIButton, forEvent event: UIEvent) {
+  @IBAction func handleAnotherIconTap(sender: AnyObject) {
+    guard let sender = sender as? IconControl else { return }
+    
+    print("\(sender.text) tapped")
   }
+  
   
 }
 
