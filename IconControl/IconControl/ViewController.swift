@@ -15,6 +15,17 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    
+    iconControl.addTarget(self, action: "handleIconTap:", forControlEvents: .TouchUpInside)
   }
+  
+  func handleIconTap(sender: AnyObject) {
+    print("Icon Tapped!")
+  }
+  
+  
+  @IBAction func buttonResponder(sender: UIButton, forEvent event: UIEvent) {
+  }
+  
 }
 

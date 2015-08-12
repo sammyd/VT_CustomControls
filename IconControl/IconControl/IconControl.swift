@@ -24,8 +24,7 @@ class IconControl : UIControl {
     return label
   }()
   
-  private var stackView : UIStackView!
-
+  private var spacingConstraint : NSLayoutConstraint!
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -68,10 +67,10 @@ extension IconControl {
   @IBInspectable
   var spacing: CGFloat {
     get {
-      return stackView.spacing
+      return spacingConstraint.constant
     }
     set(newSpacing) {
-      stackView.spacing = newSpacing
+      spacingConstraint.constant = newSpacing
     }
   }
 }
@@ -80,23 +79,60 @@ extension IconControl {
 extension IconControl {
   private func sharedInitialization() {
     label.textColor = tintColor
-    stackView = UIStackView(arrangedSubviews: [imageView, label])
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .Horizontal
-    stackView.alignment = .Center
-    addSubview(stackView)
     
+    addSubview(label)
+    addSubview(imageView)
+    
+    spacingConstraint = label.leftAnchor.constraintEqualToAnchor(imageView.rightAnchor, constant: 0)
     
     NSLayoutConstraint.activateConstraints(
       [
-        stackView.leadingAnchor.constraintEqualToAnchor(layoutMarginsGuide.leadingAnchor),
-        stackView.trailingAnchor.constraintEqualToAnchor(layoutMarginsGuide.trailingAnchor),
-        stackView.topAnchor.constraintEqualToAnchor(layoutMarginsGuide.topAnchor),
-        stackView.bottomAnchor.constraintEqualToAnchor(layoutMarginsGuide.bottomAnchor)
+        imageView.leadingAnchor.constraintEqualToAnchor(layoutMarginsGuide.leadingAnchor),
+        imageView.topAnchor.constraintEqualToAnchor(layoutMarginsGuide.topAnchor),
+        imageView.bottomAnchor.constraintEqualToAnchor(layoutMarginsGuide.bottomAnchor),
+        spacingConstraint,
+        label.rightAnchor.constraintEqualToAnchor(layoutMarginsGuide.rightAnchor),
+        imageView.centerYAnchor.constraintEqualToAnchor(label.centerYAnchor)
       ]
     )
     
+    label.setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
+    imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
+    setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
+    
     layer.cornerRadius = 10
+    
+    addTapGestureRecognizer()
+  }
+}
+
+
+extension IconControl {
+  private func addTapGestureRecognizer() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
+    addGestureRecognizer(tapGesture)
+  }
+  
+  func handleTap(sender: UITapGestureRecognizer) {
+    sendActionsForControlEvents(.TouchUpInside)
+  }
+  
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    animateTintAdjustmentMode(.Dimmed)
+  }
+  
+  override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    animateTintAdjustmentMode(.Normal)
+  }
+  
+  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    animateTintAdjustmentMode(.Normal)
+  }
+  
+  private func animateTintAdjustmentMode(mode: UIViewTintAdjustmentMode) {
+    UIView.animateWithDuration(mode == .Normal ? 0.3 : 0.05) {
+      self.tintAdjustmentMode = mode
+    }
   }
 }
 

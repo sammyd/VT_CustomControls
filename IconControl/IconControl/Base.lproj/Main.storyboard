@@ -16,22 +16,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5i7-9U-N6a" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
-                                <rect key="frame" x="197.5" y="260" width="206" height="80"/>
-                                <color key="backgroundColor" red="0.30980392159999998" green="0.1333333333" blue="0.40000000000000002" alpha="0.25" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Blast Off!"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="spaceship"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="spacing">
-                                        <real key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oBI-ND-Gep">
+                                <rect key="frame" x="185.5" y="90" width="229" height="420"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jat-S0-76s" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
+                                        <rect key="frame" x="36" y="0.0" width="157" height="80"/>
+                                        <color key="backgroundColor" red="0.30980392159999998" green="0.1333333333" blue="0.40000000000000002" alpha="0.25" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Short"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="spaceship"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-vw-Ui6" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
+                                        <rect key="frame" x="11.5" y="85" width="206" height="80"/>
+                                        <color key="backgroundColor" red="0.30980392159999998" green="0.1333333333" blue="0.40000000000000002" alpha="0.25" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Blast Off!"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="spaceship"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YeL-rp-vqo" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
+                                        <rect key="frame" x="11.5" y="170" width="206" height="80"/>
+                                        <color key="backgroundColor" red="0.99607843139999996" green="0.7843137255" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.10980392160000001" green="0.64313725489999995" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Blast Off!"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="spaceship"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5i7-9U-N6a" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
+                                        <rect key="frame" x="18.5" y="255" width="192" height="80"/>
+                                        <color key="backgroundColor" red="0.30980392159999998" green="0.1333333333" blue="0.40000000000000002" alpha="0.25" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Cocktail"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="cocktail"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LDX-n3-ELZ" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="340" width="229" height="80"/>
+                                        <color key="backgroundColor" red="0.79607843140000001" green="0.74509803919999995" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.27244031210000003" green="0.41363765460000002" blue="0.60544902150000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Blast Off!"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="spaceship"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5i7-9U-N6a" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HtQ-xT-0Qx"/>
-                            <constraint firstItem="5i7-9U-N6a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gCe-0X-0cb"/>
+                            <constraint firstItem="oBI-ND-Gep" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Dn-2m-uLO"/>
+                            <constraint firstItem="oBI-ND-Gep" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="A8B-Xv-YxF"/>
                         </constraints>
                     </view>
                     <connections>
@@ -40,9 +91,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="421" y="490"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cocktail" width="64" height="64"/>
         <image name="spaceship" width="64" height="64"/>
     </resources>
 </document>
