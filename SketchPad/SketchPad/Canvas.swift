@@ -13,13 +13,20 @@ class Canvas : UIView {
   
   private var drawing: UIImage?
   
+  @IBInspectable
+  var strokeWidth : CGFloat = 4.0
+  
+  @IBInspectable
+  var strokeColor : UIColor = UIColor.blackColor()
+}
+
+extension Canvas {
   override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
     if let touch = touches.first {
       addLineFromPoint(touch.previousLocationInView(self), toPoint: touch.locationInView(self))
     }
   }
 }
-
 
 extension Canvas {
   private func addLineFromPoint(from: CGPoint, toPoint: CGPoint) {
@@ -32,8 +39,8 @@ extension Canvas {
     CGContextAddLineToPoint(cxt, toPoint.x, toPoint.y)
     
     CGContextSetLineCap(cxt, .Round)
-    CGContextSetLineWidth(cxt, 4.0)
-    UIColor.blackColor().setStroke()
+    CGContextSetLineWidth(cxt, strokeWidth)
+    strokeColor.setStroke()
     
     CGContextStrokePath(cxt)
     
