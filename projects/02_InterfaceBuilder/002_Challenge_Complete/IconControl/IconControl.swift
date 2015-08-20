@@ -91,6 +91,8 @@ extension IconControl {
     addSubview(label)
     addSubview(imageView)
     
+    label.textColor = tintColor
+    
     spacingConstraint = label.leftAnchor.constraintEqualToAnchor(imageView.rightAnchor, constant: spacing)
     
     NSLayoutConstraint.activateConstraints(
@@ -109,6 +111,13 @@ extension IconControl {
     setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
     
     layer.cornerRadius = 10
+  }
+}
+
+extension IconControl {
+  override func tintColorDidChange() {
+    super.tintColorDidChange()
+    label.textColor = tintColor
   }
 }
 
