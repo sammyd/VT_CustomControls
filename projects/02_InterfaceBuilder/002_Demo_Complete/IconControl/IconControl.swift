@@ -22,8 +22,10 @@
 
 import UIKit
 
+
+@IBDesignable
 class IconControl : UIView {
-  
+
   private lazy var imageView : UIImageView = {
     let iv = UIImageView()
     iv.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +41,7 @@ class IconControl : UIView {
   
   private var spacingConstraint : NSLayoutConstraint!
   
+  @IBInspectable
   var spacing: CGFloat = 20.0 {
     didSet {
       spacingConstraint?.constant = spacing
@@ -59,6 +62,7 @@ class IconControl : UIView {
 
 // MARK:- Public API
 extension IconControl {
+  @IBInspectable
   var image: UIImage? {
     get {
       return imageView.image
@@ -68,6 +72,7 @@ extension IconControl {
     }
   }
   
+  @IBInspectable
   var text: String? {
     get {
       return label.text
