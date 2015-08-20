@@ -28,8 +28,6 @@ class ViewController: UIViewController {
     return IconControl(frame: CGRect.zeroRect)
   }()
   
-  @IBOutlet weak var otherIcon: IconControl!
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
