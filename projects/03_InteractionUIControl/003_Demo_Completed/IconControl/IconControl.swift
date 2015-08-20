@@ -24,7 +24,7 @@ import UIKit
 
 
 @IBDesignable
-class IconControl : UIView {
+class IconControl : UIControl {
 
   private lazy var imageView : UIImageView = {
     let iv = UIImageView()
@@ -111,6 +111,8 @@ extension IconControl {
     setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
     
     layer.cornerRadius = 10
+    
+    addTapGestureRecognizer()
   }
 }
 
@@ -121,4 +123,15 @@ extension IconControl {
   }
 }
 
+
+extension IconControl {
+  private func addTapGestureRecognizer() {
+    let tapGestureRecogniser = UITapGestureRecognizer(target: self, action: "handleIconTapped:")
+    addGestureRecognizer(tapGestureRecogniser)
+  }
+  
+  func handleIconTapped(sender: UITapGestureRecognizer) {
+    sendActionsForControlEvents(.TouchUpInside)
+  }
+}
 
