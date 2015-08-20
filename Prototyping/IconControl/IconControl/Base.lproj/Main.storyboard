@@ -34,7 +34,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-vw-Ui6" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
-                                        <rect key="frame" x="11" y="85" width="206" height="80"/>
+                                        <rect key="frame" x="11.5" y="85" width="206" height="80"/>
                                         <color key="backgroundColor" red="0.30980392159999998" green="0.1333333333" blue="0.40000000000000002" alpha="0.25" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="Blast Off!"/>
@@ -48,7 +48,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YeL-rp-vqo" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
-                                        <rect key="frame" x="11" y="170" width="206" height="80"/>
+                                        <rect key="frame" x="11.5" y="170" width="206" height="80"/>
                                         <color key="backgroundColor" red="0.99607843139999996" green="0.7843137255" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.10980392160000001" green="0.64313725489999995" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
@@ -63,7 +63,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5i7-9U-N6a" customClass="IconControl" customModule="IconControl" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="255" width="192" height="80"/>
+                                        <rect key="frame" x="18.5" y="255" width="192" height="80"/>
                                         <color key="backgroundColor" red="0.30980392159999998" green="0.1333333333" blue="0.40000000000000002" alpha="0.25" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="Cocktail"/>
