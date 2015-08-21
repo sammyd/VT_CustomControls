@@ -102,8 +102,25 @@ extension ThreeRingView {
     // Set the default values
     for (color, ring) in zip([UIColor.hrPinkColor, UIColor.hrGreenColor, UIColor.hrBlueColor], rings) {
       setColor(color, ofRing: ring)
-      ring.value = 0.0
+      ring.value = 0.7
     }
+  }
+  
+  private func drawLayers() {
+    let size = min(bounds.width, bounds.height)
+    for ringIdx in 0 ..< rings.count {
+      // Sort sizes
+      let ring = rings[ringIdx]
+      let curSize = size - CGFloat(ringIdx) * ( ringWidth + ringPadding ) * 2.0
+      ring.bounds = CGRect(x: 0, y: 0, width: curSize, height: curSize)
+      ring.position = CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
+    }
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    backgroundColor = UIColor.blackColor()
+    drawLayers()
   }
 }
 
