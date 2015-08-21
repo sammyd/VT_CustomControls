@@ -133,5 +133,24 @@ extension IconControl {
   func handleIconTapped(sender: UITapGestureRecognizer) {
     sendActionsForControlEvents(.TouchUpInside)
   }
+  
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    animateTintAdjustmentMode(.Dimmed)
+  }
+  
+  override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    animateTintAdjustmentMode(.Normal)
+  }
+  
+  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    animateTintAdjustmentMode(.Normal)
+  }
+  
+  private func animateTintAdjustmentMode(mode: UIViewTintAdjustmentMode) {
+    UIView.animateWithDuration(mode == .Normal ? 0.3 : 0.05) {
+      self.tintAdjustmentMode = mode
+    }
+  }
+
 }
 
