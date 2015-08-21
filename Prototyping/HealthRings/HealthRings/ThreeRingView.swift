@@ -46,8 +46,8 @@ class ThreeRingView : UIView {
 extension ThreeRingView {
   @IBInspectable
   var colorInnerRing : UIColor {
-    set {
-      setColor(colorInnerRing, ofRing: rings[2])
+    set(newColor) {
+      setColor(newColor, ofRing: rings[2])
     }
     get {
       return UIColor(CGColor: rings[2].ringColors.0)
@@ -56,8 +56,8 @@ extension ThreeRingView {
   
   @IBInspectable
   var colorMiddleRing : UIColor {
-    set {
-      setColor(colorMiddleRing, ofRing: rings[1])
+    set(newColor) {
+      setColor(newColor, ofRing: rings[1])
     }
     get {
       return UIColor(CGColor: rings[1].ringColors.0)
@@ -66,8 +66,8 @@ extension ThreeRingView {
   
   @IBInspectable
   var colorOuterRing : UIColor {
-    set {
-      setColor(colorOuterRing, ofRing: rings[0])
+    set(newColor) {
+      setColor(newColor, ofRing: rings[0])
     }
     get {
       return UIColor(CGColor: rings[0].ringColors.0)
@@ -84,8 +84,8 @@ extension ThreeRingView {
 extension ThreeRingView {
   @IBInspectable
   var valueInnerRing : CGFloat {
-    set {
-      rings[2].value = valueInnerRing
+    set(newValue) {
+      setValueInnerRing(newValue, animated: false)
     }
     get {
       return rings[2].value
@@ -94,8 +94,8 @@ extension ThreeRingView {
   
   @IBInspectable
   var valueMiddleRing : CGFloat {
-    set {
-      rings[1].value = valueMiddleRing
+    set(newValue) {
+      setValueMiddleRing(newValue, animated: false)
     }
     get {
       return rings[1].value
@@ -104,8 +104,8 @@ extension ThreeRingView {
   
   @IBInspectable
   var valueOuterRing : CGFloat {
-    set {
-      rings[0].value = valueOuterRing
+    set(newValue) {
+      setValueOuterRing(newValue, animated: false)
     }
     get {
       return rings[0].value
