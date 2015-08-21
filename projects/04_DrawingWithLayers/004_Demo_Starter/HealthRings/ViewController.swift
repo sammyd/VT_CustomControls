@@ -19,9 +19,9 @@ class ViewController: UIViewController {
   }
 
   @IBAction func updateRingValues(sender: AnyObject) {
-    healthRings.setValueInnerRing(CGFloat(sliders[0].value ?? 0), animated: true)
-    healthRings.setValueMiddleRing(CGFloat(sliders[1].value ?? 0), animated: true)
-    healthRings.setValueOuterRing(CGFloat(sliders[2].value ?? 0), animated: true)
+    healthRings.valueInnerRing = CGFloat(sliders[0].value ?? 0)
+    healthRings.valueMiddleRing = CGFloat(sliders[1].value ?? 0)
+    healthRings.valueOuterRing = CGFloat(sliders[2].value ?? 0)
   }
 }
 

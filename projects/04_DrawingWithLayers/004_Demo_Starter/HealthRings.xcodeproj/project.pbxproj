@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2286B7C81B2B8A63007D66F1 /* RotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2286B7C71B2B8A63007D66F1 /* RotationAnimation.swift */; };
 		2286B7CA1B31FDE4007D66F1 /* ShadowTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2286B7C91B31FDE4007D66F1 /* ShadowTip.swift */; };
 		22B1EE6E1B2B74AB0048F08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE6D1B2B74AB0048F08C /* AppDelegate.swift */; };
 		22B1EE701B2B74AB0048F08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1EE6F1B2B74AB0048F08C /* ViewController.swift */; };
@@ -21,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2286B7C71B2B8A63007D66F1 /* RotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationAnimation.swift; sourceTree = "<group>"; };
 		2286B7C91B31FDE4007D66F1 /* ShadowTip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowTip.swift; sourceTree = "<group>"; };
 		22B1EE681B2B74AB0048F08C /* HealthRings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthRings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B1EE6C1B2B74AB0048F08C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +51,6 @@
 				22B1EE8E1B2B77D90048F08C /* CircularGradient.swift */,
 				2286B7C91B31FDE4007D66F1 /* ShadowTip.swift */,
 				22B1EE901B2B787D0048F08C /* RingLayer.swift */,
-				2286B7C71B2B8A63007D66F1 /* RotationAnimation.swift */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -178,7 +175,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B1EE701B2B74AB0048F08C /* ViewController.swift in Sources */,
-				2286B7C81B2B8A63007D66F1 /* RotationAnimation.swift in Sources */,
 				22B1EE951B2B789F0048F08C /* Utilities.swift in Sources */,
 				22B1EE6E1B2B74AB0048F08C /* AppDelegate.swift in Sources */,
 				22B1EE931B2B78870048F08C /* ThreeRingView.swift in Sources */,
