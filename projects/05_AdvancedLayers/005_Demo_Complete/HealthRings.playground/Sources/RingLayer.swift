@@ -20,17 +20,14 @@ public class RingLayer : CALayer {
   private lazy var foregroundLayer : CALayer = {
     let layer = CALayer()
     layer.addSublayer(self.gradientLayer)
-    layer.addSublayer(self.ringTipLayer)
     layer.mask = self.foregroundMask
     return layer
     }()
   
-  private lazy var ringTipLayer : CAShapeLayer = {
-    let layer = CAShapeLayer()
-    layer.strokeColor = self.ringColors.0
-    layer.lineWidth = self.ringWidth
-    layer.fillColor = nil
-    layer.lineCap = kCALineCapRound
+  private lazy var ringTipLayer : RingTip = {
+    let layer = RingTip()
+    layer.color = self.ringColors.0
+    layer.ringWidth = self.ringWidth
     return layer
     }()
   
@@ -48,7 +45,7 @@ public class RingLayer : CALayer {
   public var ringWidth: CGFloat = 40.0 {
     didSet {
       backgroundLayer.lineWidth = ringWidth
-      ringTipLayer.lineWidth = ringWidth
+      ringTipLayer.ringWidth = ringWidth
       foregroundMask.lineWidth = ringWidth
       preparePaths()
     }
@@ -63,7 +60,7 @@ public class RingLayer : CALayer {
   public var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.redColor().darkerColor.CGColor) {
     didSet {
       gradientLayer.colors = ringColors
-      ringTipLayer.strokeColor = ringColors.0
+      ringTipLayer.color = ringColors.0
     }
   }
   public var ringBackgroundColor: CGColorRef = UIColor.darkGrayColor().CGColor {
@@ -87,7 +84,7 @@ public class RingLayer : CALayer {
 extension RingLayer {
   private func sharedInitialization() {
     backgroundColor = UIColor.blackColor().CGColor
-    [backgroundLayer, foregroundLayer].forEach { self.addSublayer($0) }
+    [backgroundLayer, foregroundLayer, ringTipLayer].forEach { self.addSublayer($0) }
     self.value = 0.8
   }
   
@@ -111,7 +108,6 @@ extension RingLayer {
   private func preparePaths() {
     backgroundLayer.path = backgroundPath
     foregroundMask.path = maskPathForValue(value)
-    ringTipLayer.path = UIBezierPath(arcCenter: center, radius: radius, startAngle: -0.01, endAngle: 0, clockwise: true).CGPath
   }
   
   private var backgroundPath : CGPathRef {
