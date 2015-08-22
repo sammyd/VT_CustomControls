@@ -27,6 +27,17 @@ extension RingLayer {
   private func sharedInitialization() {
     backgroundColor = UIColor.blackColor().CGColor
   }
+  
+  public override func layoutSublayers() {
+    super.layoutSublayers()
+    guard let sublayers = sublayers else { return }
+    if sublayers.first?.bounds != bounds {
+      for layer in sublayers {
+        layer.bounds = bounds
+        layer.position = position
+      }
+    }
+  }
 }
 
 
