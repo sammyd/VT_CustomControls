@@ -23,6 +23,7 @@
 
 import UIKit
 
+@IBDesignable
 class ThreeRingView : UIView {
   
   private enum RingIndex : Int {
@@ -76,6 +77,7 @@ class ThreeRingView : UIView {
   }
   
   //: API Properties
+  @IBInspectable
   var ringWidth : CGFloat = 20.0 {
     didSet {
       drawLayers()
@@ -84,11 +86,13 @@ class ThreeRingView : UIView {
       }
     }
   }
+  @IBInspectable
   var ringPadding : CGFloat = 1.0 {
     didSet {
       drawLayers()
     }
   }
+  @IBInspectable
   var ringBackgroundColor : UIColor = UIColor.darkGrayColor() {
     didSet {
       for (_, ring) in rings {
@@ -100,6 +104,7 @@ class ThreeRingView : UIView {
 
 //: Values
 extension ThreeRingView {
+  @IBInspectable
   var innerRingValue : CGFloat {
     get {
       return rings[.Inner]?.value ?? 0
@@ -108,6 +113,7 @@ extension ThreeRingView {
       rings[.Inner]?.value = newValue
     }
   }
+  @IBInspectable
   var middleRingValue : CGFloat {
     get {
       return rings[.Middle]?.value ?? 0
@@ -116,6 +122,7 @@ extension ThreeRingView {
       rings[.Middle]?.value = newValue
     }
   }
+  @IBInspectable
   var outerRingValue : CGFloat {
     get {
       return rings[.Outer]?.value ?? 0
@@ -128,6 +135,7 @@ extension ThreeRingView {
 
 //: Colors
 extension ThreeRingView {
+  @IBInspectable
   var innerRingColor : UIColor {
     get {
       return colorForRing(.Inner)
@@ -136,6 +144,7 @@ extension ThreeRingView {
       setColorForRing(.Inner, color: newColor)
     }
   }
+  @IBInspectable
   var middleRingColor : UIColor {
     get {
       return UIColor.clearColor()
@@ -144,6 +153,7 @@ extension ThreeRingView {
       setColorForRing(.Middle, color: newColor)
     }
   }
+  @IBInspectable
   var outerRingColor : UIColor {
     get {
       return UIColor.clearColor()

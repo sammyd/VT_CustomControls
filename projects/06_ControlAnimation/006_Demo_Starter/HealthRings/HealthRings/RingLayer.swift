@@ -79,6 +79,16 @@ public class RingLayer : CALayer {
     super.init(coder: aDecoder)
     sharedInitialization()
   }
+  
+  override init(layer: AnyObject) {
+    super.init(layer: layer)
+    if let layer = layer as? RingLayer {
+      ringWidth = layer.ringWidth
+      value = layer.value
+      ringBackgroundColor = layer.ringBackgroundColor
+      ringColors = layer.ringColors
+    }
+  }
 }
 
 extension RingLayer {

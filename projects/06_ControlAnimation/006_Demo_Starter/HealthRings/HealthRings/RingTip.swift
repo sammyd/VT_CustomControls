@@ -69,6 +69,14 @@ class RingTip : CALayer {
     sharedInitialisation()
   }
   
+  override init(layer: AnyObject) {
+    super.init(layer: layer)
+    if let layer = layer as? RingTip {
+      color = layer.color
+      ringWidth = layer.ringWidth
+    }
+  }
+  
   
   private func sharedInitialisation() {
     addSublayer(shadowLayer)
