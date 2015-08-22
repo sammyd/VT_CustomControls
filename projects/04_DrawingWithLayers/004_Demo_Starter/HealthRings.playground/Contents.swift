@@ -34,7 +34,7 @@ extension RingLayer {
     if sublayers.first?.bounds != bounds {
       for layer in sublayers {
         layer.bounds = bounds
-        layer.position = position
+        layer.position = center
       }
     }
   }

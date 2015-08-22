@@ -97,7 +97,7 @@ extension RingLayer {
     if backgroundLayer.bounds != bounds {
       for layer in [backgroundLayer, foregroundLayer, foregroundMask, gradientLayer, ringTipLayer] {
         layer.bounds = bounds
-        layer.position = position
+        layer.position = center
       }
     }
     preparePaths()
