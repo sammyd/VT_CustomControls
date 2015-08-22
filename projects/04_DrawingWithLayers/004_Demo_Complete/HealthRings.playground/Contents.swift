@@ -6,9 +6,9 @@ public class RingLayer : CALayer {
   private let angleOffsetForZero = CGFloat(-M_PI_2)
   
   //:- Public API
-  var ringWidth: CGFloat = 20.0
   var value: CGFloat = 0.7
-  var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.blackColor().CGColor)
+  var ringWidth: CGFloat = 40.0
+  var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.redColor().darkerColor.CGColor)
   var ringBackgroundColor: CGColorRef = UIColor.darkGrayColor().CGColor
   
   //:- Initialisation
@@ -41,6 +41,7 @@ extension RingLayer {
 }
 
 
+let ring = RingLayer()
 
-viewWithLayer(RingLayer())
+viewWithLayer(ring)
 

@@ -31,11 +31,11 @@ private class CircularGradientFilter : CIFilter {
     }()
   
   var outputSize: CGSize!
-  var colours: (CIColor, CIColor)!
+  var colors: (CIColor, CIColor)!
   
   override var outputImage : CIImage {
     let dod = CGRect(origin: CGPoint.zeroPoint, size: outputSize)
-    let args = [ colours.0 as AnyObject, colours.1 as AnyObject, outputSize.width, outputSize.height]
+    let args = [ colors.0 as AnyObject, colors.1 as AnyObject, outputSize.width, outputSize.height]
     return kernel.applyWithExtent(dod, arguments: args)!
   }
   
@@ -43,8 +43,8 @@ private class CircularGradientFilter : CIFilter {
     let kernelString =
     "kernel vec4 chromaKey( __color c1, __color c2, float width, float height ) { \n" +
       "  vec2 pos = destCoord();\n" +
-      "  float x = 2.0 * pos.x / width - 1.0;\n" +
-      "  float y = 2.0 * pos.y / height - 1.0;\n" +
+      "  float x = 1.0 - 2.0 * pos.x / width;\n" +
+      "  float y = 1.0 - 2.0 * pos.y / height;\n" +
       "  float prop = atan(y, x) / (3.1415926535897932 * 2.0) + 0.5;\n" +
       "  return c1 * prop + c2 * (1.0 - prop);\n" +
     "}"
@@ -72,11 +72,11 @@ public class CircularGradientLayer : CALayer {
     super.init(layer: layer)
     needsDisplayOnBoundsChange = true
     if let layer = layer as? CircularGradientLayer {
-      colours = layer.colours
+      colors = layer.colors
     }
   }
   
-  var colours: (CGColorRef, CGColorRef) = (UIColor.whiteColor().CGColor, UIColor.blackColor().CGColor) {
+  public var colors: (CGColorRef, CGColorRef) = (UIColor.whiteColor().CGColor, UIColor.blackColor().CGColor) {
     didSet {
       setNeedsDisplay()
     }
@@ -85,7 +85,7 @@ public class CircularGradientLayer : CALayer {
   public override func drawInContext(ctx: CGContext) {
     super.drawInContext(ctx)
     gradientFilter.outputSize = bounds.size
-    gradientFilter.colours = (CIColor(CGColor: colours.0), CIColor(CGColor: colours.1))
+    gradientFilter.colors = (CIColor(CGColor: colors.0), CIColor(CGColor: colors.1))
     let image = ciContext.createCGImage(gradientFilter.outputImage, fromRect: bounds)
     CGContextDrawImage(ctx, bounds, image)
   }
