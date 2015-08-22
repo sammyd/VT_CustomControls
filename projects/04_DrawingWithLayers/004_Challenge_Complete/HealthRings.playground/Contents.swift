@@ -46,7 +46,14 @@ public class RingLayer : CALayer {
   
   
   //:- Public API
-  var ringWidth: CGFloat = 40.0
+  var ringWidth: CGFloat = 40.0 {
+    didSet {
+      backgroundLayer.lineWidth = ringWidth
+      ringTipLayer.lineWidth = ringWidth
+      foregroundMask.lineWidth = ringWidth
+      preparePaths()
+    }
+  }
   var value: CGFloat = 0.0 {
     didSet {
       preparePaths()
@@ -54,8 +61,17 @@ public class RingLayer : CALayer {
       gradientLayer.setValue(angleForValue(value), forKeyPath: "transform.rotation.z")
     }
   }
-  var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.redColor().darkerColor.CGColor)
-  var ringBackgroundColor: CGColorRef = UIColor.darkGrayColor().CGColor
+  var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.redColor().darkerColor.CGColor) {
+    didSet {
+      gradientLayer.colors = ringColors
+      ringTipLayer.strokeColor = ringColors.0
+    }
+  }
+  var ringBackgroundColor: CGColorRef = UIColor.darkGrayColor().CGColor {
+    didSet {
+      backgroundLayer.strokeColor = ringBackgroundColor
+    }
+  }
   
   //:- Initialisation
   public override init() {
@@ -113,7 +129,9 @@ extension RingLayer {
 }
 
 let ring = RingLayer()
-ring.value = 0.2
+ring.value = 0.8
+ring.ringWidth = 60
+ring.ringColors = (UIColor.hrPinkColor.CGColor, UIColor.hrPinkColor.darkerColor.CGColor)
 
 viewWithLayer(ring)
 
