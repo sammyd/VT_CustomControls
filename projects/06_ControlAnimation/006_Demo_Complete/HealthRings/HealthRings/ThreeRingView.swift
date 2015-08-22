@@ -23,15 +23,16 @@
 
 import UIKit
 
+enum RingIndex : Int {
+  case Inner  = 0
+  case Middle = 1
+  case Outer  = 2
+}
+
+
 @IBDesignable
 class ThreeRingView : UIView {
-  
-  private enum RingIndex : Int {
-    case Inner  = 0
-    case Middle = 1
-    case Outer  = 2
-  }
-  
+
   private let rings : [RingIndex : RingLayer] = [.Inner : RingLayer(), .Middle : RingLayer(), .Outer : RingLayer()]
   
   override init(frame: CGRect) {
@@ -110,7 +111,7 @@ extension ThreeRingView {
       return rings[.Inner]?.value ?? 0
     }
     set(newValue) {
-      rings[.Inner]?.value = newValue
+      setValueOnRing(.Inner, value: newValue, animated: false)
     }
   }
   @IBInspectable
@@ -119,7 +120,7 @@ extension ThreeRingView {
       return rings[.Middle]?.value ?? 0
     }
     set(newValue) {
-      rings[.Middle]?.value = newValue
+      setValueOnRing(.Middle, value: newValue, animated: false)
     }
   }
   @IBInspectable
@@ -128,8 +129,11 @@ extension ThreeRingView {
       return rings[.Outer]?.value ?? 0
     }
     set(newValue) {
-      rings[.Outer]?.value = newValue
+      setValueOnRing(.Outer, value: newValue, animated: false)
     }
+  }
+  func setValueOnRing(ringIndex: RingIndex, value: CGFloat, animated: Bool = false) {
+    rings[ringIndex]?.setValue(value, animated: animated)
   }
 }
 

@@ -50,11 +50,13 @@ public class RingLayer : CALayer {
       preparePaths()
     }
   }
-  public var value: CGFloat = 0.0 {
-    didSet {
-      preparePaths()
-      ringTipLayer.setValue(angleForValue(value), forKeyPath: "transform.rotation.z")
-      gradientLayer.setValue(angleForValue(value), forKeyPath: "transform.rotation.z")
+  private var _value: CGFloat = 0.0
+  public var value: CGFloat {
+    get {
+      return _value
+    }
+    set(newValue) {
+      setValue(newValue, animated: false)
     }
   }
   public var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.redColor().darkerColor.CGColor) {
@@ -132,3 +134,26 @@ extension RingLayer {
     return value * 2 * CGFloat(M_PI) + angleOffsetForZero
   }
 }
+
+extension RingLayer {
+  func setValue(value: CGFloat, animated: Bool = false) {
+    _value = value
+    
+    if animated {
+      // Do something
+    } else {
+      CATransaction.begin()
+      CATransaction.setDisableActions(true)
+      preparePaths()
+      ringTipLayer.setValue(angleForValue(value), forKeyPath: "transform.rotation.z")
+      gradientLayer.setValue(angleForValue(value), forKeyPath: "transform.rotation.z")
+      CATransaction.commit()
+    }
+  }
+}
+
+
+
+
+
+
