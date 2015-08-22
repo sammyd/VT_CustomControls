@@ -24,9 +24,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var threeRingView: ThreeRingView!
+  @IBOutlet weak var animationEnabledSwitch: UISwitch!
+  @IBOutlet var valueSliders: [UISlider]!
+  
+  @IBAction func handleUpdateButtonTapped() {
+    if animationEnabledSwitch.on {
+      // Do something here for animation
+      
+    } else {
+      threeRingView.innerRingValue = CGFloat(valueSliders[0].value)
+      threeRingView.middleRingValue = CGFloat(valueSliders[1].value)
+      threeRingView.outerRingValue = CGFloat(valueSliders[2].value)
+    }
+  }
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    handleUpdateButtonTapped()
   }
 
 }
