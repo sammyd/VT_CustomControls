@@ -29,8 +29,8 @@ class ViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
   }
   
-  @IBAction func handleIconTapped(sender: AnyObject) {    
-    print("Icon Tapped!")
+  @IBAction func handleIconTapped(sender: IconControl) {
+    print("Icon Tapped : \(sender.text!)")
   }
 
   
