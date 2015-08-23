@@ -107,8 +107,8 @@ extension RingLayer {
         layer.bounds = bounds
         layer.position = center
       }
+      preparePaths()
     }
-    preparePaths()
   }
 }
 
@@ -137,18 +137,61 @@ extension RingLayer {
 
 extension RingLayer {
   func setValue(value: CGFloat, animated: Bool = false) {
-    _value = value
-    
     if animated {
-      // Do something
+      animateFromValue(_value, toValue: value)
     } else {
       CATransaction.begin()
       CATransaction.setDisableActions(true)
-      preparePaths()
+      foregroundMask.path = maskPathForValue(value)
       ringTipLayer.setValue(angleForValue(value), forKeyPath: "transform.rotation.z")
       gradientLayer.setValue(angleForValue(value), forKeyPath: "transform.rotation.z")
       CATransaction.commit()
     }
+    
+    _value = value
+  }
+  
+  private func animateFromValue(fromValue: CGFloat, toValue: CGFloat) {
+    let angleDelta = (toValue - fromValue) * 2.0 * CGFloat(M_PI)
+    if abs(angleDelta) < 0.001 {
+      return
+    }
+    
+    CATransaction.begin()
+    CATransaction.setDisableActions(true)
+    CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+    
+    // Rotate the tip and the gradient
+    ringTipLayer.addAnimation(rotationForLayer(ringTipLayer, byAngle: angleDelta), forKey: "transform.rotation.z")
+    gradientLayer.addAnimation(rotationForLayer(gradientLayer, byAngle: angleDelta), forKey: "transform.rotation.z")
+    // Update model
+    ringTipLayer.setValue(angleForValue(toValue), forKeyPath: "transform.rotation.z")
+    gradientLayer.setValue(angleForValue(toValue), forKeyPath: "transform.rotation.z")
+    
+    // Update the foreground mask path
+    let finalMaskPath = maskPathForValue(toValue)
+    let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
+    if angleDelta > 0 {
+      // Need to grow the mask. Immediately create the larger path and animate strokeEnd to fill it
+      foregroundMask.path = finalMaskPath
+      strokeAnimation.fromValue = fromValue / toValue
+      strokeAnimation.toValue = 1.0
+    } else {
+      // Mask needs to shrink. Animate down and replace mask at end of transaction
+      strokeAnimation.fromValue = 1.0
+      strokeAnimation.toValue = toValue / fromValue
+      CATransaction.setCompletionBlock {
+        // Update the mask to the new shape after the animation
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        self.foregroundMask.path = finalMaskPath
+        self.foregroundMask.strokeEnd = 1.0
+        CATransaction.commit()
+      }
+    }
+    foregroundMask.addAnimation(strokeAnimation, forKey: "strokeEnd")
+    
+    CATransaction.commit()
   }
 }
 

@@ -61,3 +61,26 @@ public extension UIColor {
     return UIColor(red: 251.0/255.0, green:  12.0/255.0, blue: 116.0/255.0, alpha: 1.0)
   }
 }
+
+
+func rotationForLayer(layer: CALayer, byAngle angle: CGFloat) -> CAKeyframeAnimation {
+  let animation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+  
+  let c = layer.valueForKeyPath("transform.rotation.z")
+  let currentAngle = c as? CGFloat ?? 0
+  
+  let numberOfKeyFrames = Int(floor(abs(angle) / CGFloat(M_PI_4)) + 2)
+  
+  var times = [CGFloat]()
+  var values = [CGFloat]()
+  
+  for i in 0 ... abs(numberOfKeyFrames) {
+    times.append(CGFloat(i) / CGFloat(numberOfKeyFrames))
+    values.append(angle / CGFloat(numberOfKeyFrames) * CGFloat(i) + currentAngle)
+  }
+  
+  animation.keyTimes = times
+  animation.values = values
+  
+  return animation
+}
