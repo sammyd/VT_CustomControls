@@ -105,8 +105,8 @@ extension RingLayer {
         layer.bounds = bounds
         layer.position = center
       }
+      preparePaths()
     }
-    preparePaths()
   }
 }
 
