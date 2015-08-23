@@ -1,6 +1,6 @@
 import UIKit
 
-public class RingLayer : CALayer {
+class RingLayer : CALayer {
   
   private let angleOffsetForZero = CGFloat(-M_PI_2)
   private lazy var gradientLayer : CircularGradientLayer = {
@@ -42,7 +42,7 @@ public class RingLayer : CALayer {
   
   
   //:- Public API
-  public var ringWidth: CGFloat = 40.0 {
+  var ringWidth: CGFloat = 40.0 {
     didSet {
       backgroundLayer.lineWidth = ringWidth
       ringTipLayer.ringWidth = ringWidth
@@ -51,7 +51,7 @@ public class RingLayer : CALayer {
     }
   }
   private var _value: CGFloat = 0.0
-  public var value: CGFloat {
+  var value: CGFloat {
     get {
       return _value
     }
@@ -59,25 +59,25 @@ public class RingLayer : CALayer {
       setValue(newValue, animated: false)
     }
   }
-  public var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.redColor().darkerColor.CGColor) {
+  var ringColors: (CGColorRef, CGColorRef) = (UIColor.redColor().CGColor, UIColor.redColor().darkerColor.CGColor) {
     didSet {
       gradientLayer.colors = ringColors
       ringTipLayer.color = ringColors.0
     }
   }
-  public var ringBackgroundColor: CGColorRef = UIColor.darkGrayColor().CGColor {
+  var ringBackgroundColor: CGColorRef = UIColor.darkGrayColor().CGColor {
     didSet {
       backgroundLayer.strokeColor = ringBackgroundColor
     }
   }
   
   //:- Initialisation
-  public override init() {
+  override init() {
     super.init()
     sharedInitialization()
   }
   
-  required public init?(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     sharedInitialization()
   }
@@ -100,7 +100,7 @@ extension RingLayer {
     self.value = 0.8
   }
   
-  public override func layoutSublayers() {
+  override func layoutSublayers() {
     super.layoutSublayers()
     if backgroundLayer.bounds != bounds {
       for layer in [backgroundLayer, foregroundLayer, foregroundMask, gradientLayer, ringTipLayer] {

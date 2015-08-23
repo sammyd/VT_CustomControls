@@ -23,7 +23,7 @@
 
 import UIKit
 
-enum RingIndex : Int {
+public enum RingIndex : Int {
   case Inner  = 0
   case Middle = 1
   case Outer  = 2
@@ -31,7 +31,7 @@ enum RingIndex : Int {
 
 
 @IBDesignable
-class ThreeRingView : UIView {
+public class ThreeRingView : UIView {
 
   private let rings : [RingIndex : RingLayer] = [.Inner : RingLayer(), .Middle : RingLayer(), .Outer : RingLayer()]
   
@@ -40,12 +40,12 @@ class ThreeRingView : UIView {
     sharedInitialization()
   }
   
-  required init?(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     sharedInitialization()
   }
   
-  override func layoutSubviews() {
+  override public func layoutSubviews() {
     super.layoutSubviews()
     drawLayers()
   }
@@ -79,7 +79,7 @@ class ThreeRingView : UIView {
   
   //: API Properties
   @IBInspectable
-  var ringWidth : CGFloat = 20.0 {
+  public var ringWidth : CGFloat = 20.0 {
     didSet {
       drawLayers()
       for (_, ring) in rings {
@@ -88,13 +88,13 @@ class ThreeRingView : UIView {
     }
   }
   @IBInspectable
-  var ringPadding : CGFloat = 1.0 {
+  public var ringPadding : CGFloat = 1.0 {
     didSet {
       drawLayers()
     }
   }
   @IBInspectable
-  var ringBackgroundColor : UIColor = UIColor.darkGrayColor() {
+  public var ringBackgroundColor : UIColor = UIColor.darkGrayColor() {
     didSet {
       for (_, ring) in rings {
         ring.ringBackgroundColor = ringBackgroundColor.CGColor
@@ -102,13 +102,13 @@ class ThreeRingView : UIView {
     }
   }
   
-  var animationDuration : NSTimeInterval = 1.5
+  public var animationDuration : NSTimeInterval = 1.5
 }
 
 //: Values
 extension ThreeRingView {
   @IBInspectable
-  var innerRingValue : CGFloat {
+  public var innerRingValue : CGFloat {
     get {
       return rings[.Inner]?.value ?? 0
     }
@@ -117,7 +117,7 @@ extension ThreeRingView {
     }
   }
   @IBInspectable
-  var middleRingValue : CGFloat {
+  public var middleRingValue : CGFloat {
     get {
       return rings[.Middle]?.value ?? 0
     }
@@ -126,7 +126,7 @@ extension ThreeRingView {
     }
   }
   @IBInspectable
-  var outerRingValue : CGFloat {
+  public var outerRingValue : CGFloat {
     get {
       return rings[.Outer]?.value ?? 0
     }
@@ -134,7 +134,7 @@ extension ThreeRingView {
       setValueOnRing(.Outer, value: newValue, animated: false)
     }
   }
-  func setValueOnRing(ringIndex: RingIndex, value: CGFloat, animated: Bool = false) {
+  public func setValueOnRing(ringIndex: RingIndex, value: CGFloat, animated: Bool = false) {
     CATransaction.begin()
     CATransaction.setAnimationDuration(animationDuration)
     rings[ringIndex]?.setValue(value, animated: animated)
@@ -145,7 +145,7 @@ extension ThreeRingView {
 //: Colors
 extension ThreeRingView {
   @IBInspectable
-  var innerRingColor : UIColor {
+  public var innerRingColor : UIColor {
     get {
       return colorForRing(.Inner)
     }
@@ -154,7 +154,7 @@ extension ThreeRingView {
     }
   }
   @IBInspectable
-  var middleRingColor : UIColor {
+  public var middleRingColor : UIColor {
     get {
       return UIColor.clearColor()
     }
@@ -163,7 +163,7 @@ extension ThreeRingView {
     }
   }
   @IBInspectable
-  var outerRingColor : UIColor {
+  public var outerRingColor : UIColor {
     get {
       return UIColor.clearColor()
     }

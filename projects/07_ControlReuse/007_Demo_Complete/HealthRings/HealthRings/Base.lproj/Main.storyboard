@@ -34,7 +34,7 @@
                                             </slider>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-02-8Il" customClass="ThreeRingView" customModule="HealthRings" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIk-02-8Il" customClass="ThreeRingView" customModule="ThreeRingControl">
                                         <rect key="frame" x="0.0" y="35" width="560" height="366"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>

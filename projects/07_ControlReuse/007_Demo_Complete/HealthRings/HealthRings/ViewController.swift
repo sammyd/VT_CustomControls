@@ -21,6 +21,7 @@
 */
 
 import UIKit
+import ThreeRingControl
 
 class ViewController: UIViewController {
 

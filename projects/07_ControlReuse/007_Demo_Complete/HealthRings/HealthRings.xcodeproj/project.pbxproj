@@ -12,12 +12,40 @@
 		224E18DF1B89149200B65659 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224E18DD1B89149200B65659 /* Main.storyboard */; };
 		224E18E11B89149200B65659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224E18E01B89149200B65659 /* Assets.xcassets */; };
 		224E18E41B89149200B65659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224E18E21B89149200B65659 /* LaunchScreen.storyboard */; };
-		224E18F01B89157500B65659 /* CircularGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E18ED1B89157500B65659 /* CircularGradient.swift */; };
-		224E18F11B89157500B65659 /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E18EE1B89157500B65659 /* RingLayer.swift */; };
-		224E18F21B89157500B65659 /* RingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E18EF1B89157500B65659 /* RingTip.swift */; };
-		224E18F41B89158200B65659 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E18F31B89158200B65659 /* Utilities.swift */; };
-		224E18F61B89159100B65659 /* ThreeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E18F51B89159100B65659 /* ThreeRingView.swift */; };
+		224E191E1B8A044C00B65659 /* ThreeRingControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E191D1B8A043800B65659 /* ThreeRingControl.framework */; };
+		224E191F1B8A044C00B65659 /* ThreeRingControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 224E191D1B8A043800B65659 /* ThreeRingControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		224E191C1B8A043800B65659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E19181B8A043800B65659 /* ThreeRingControl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 224E19011B8A03BC00B65659;
+			remoteInfo = ThreeRingControl;
+		};
+		224E19201B8A044C00B65659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E19181B8A043800B65659 /* ThreeRingControl.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 224E19001B8A03BC00B65659;
+			remoteInfo = ThreeRingControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		224E19221B8A044C00B65659 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				224E191F1B8A044C00B65659 /* ThreeRingControl.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		224E18D61B89149200B65659 /* HealthRings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthRings.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,11 +55,7 @@
 		224E18E01B89149200B65659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		224E18E31B89149200B65659 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		224E18E51B89149200B65659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		224E18ED1B89157500B65659 /* CircularGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularGradient.swift; sourceTree = "<group>"; };
-		224E18EE1B89157500B65659 /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
-		224E18EF1B89157500B65659 /* RingTip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingTip.swift; sourceTree = "<group>"; };
-		224E18F31B89158200B65659 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		224E18F51B89159100B65659 /* ThreeRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeRingView.swift; sourceTree = "<group>"; };
+		224E19181B8A043800B65659 /* ThreeRingControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ThreeRingControl.xcodeproj; path = ../ThreeRingControl/ThreeRingControl.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224E191E1B8A044C00B65659 /* ThreeRingControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +73,7 @@
 		224E18CD1B89149200B65659 = {
 			isa = PBXGroup;
 			children = (
+				224E19181B8A043800B65659 /* ThreeRingControl.xcodeproj */,
 				224E18D81B89149200B65659 /* HealthRings */,
 				224E18D71B89149200B65659 /* Products */,
 			);
@@ -64,7 +90,6 @@
 		224E18D81B89149200B65659 /* HealthRings */ = {
 			isa = PBXGroup;
 			children = (
-				224E18EB1B8914C500B65659 /* Control */,
 				224E18D91B89149200B65659 /* AppDelegate.swift */,
 				224E18DB1B89149200B65659 /* ViewController.swift */,
 				224E18DD1B89149200B65659 /* Main.storyboard */,
@@ -75,24 +100,12 @@
 			path = HealthRings;
 			sourceTree = "<group>";
 		};
-		224E18EB1B8914C500B65659 /* Control */ = {
+		224E19191B8A043800B65659 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				224E18EC1B8914CC00B65659 /* Layers */,
-				224E18F51B89159100B65659 /* ThreeRingView.swift */,
+				224E191D1B8A043800B65659 /* ThreeRingControl.framework */,
 			);
-			name = Control;
-			sourceTree = "<group>";
-		};
-		224E18EC1B8914CC00B65659 /* Layers */ = {
-			isa = PBXGroup;
-			children = (
-				224E18F31B89158200B65659 /* Utilities.swift */,
-				224E18ED1B89157500B65659 /* CircularGradient.swift */,
-				224E18EE1B89157500B65659 /* RingLayer.swift */,
-				224E18EF1B89157500B65659 /* RingTip.swift */,
-			);
-			name = Layers;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,10 +118,12 @@
 				224E18D21B89149200B65659 /* Sources */,
 				224E18D31B89149200B65659 /* Frameworks */,
 				224E18D41B89149200B65659 /* Resources */,
+				224E19221B8A044C00B65659 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				224E19211B8A044C00B65659 /* PBXTargetDependency */,
 			);
 			name = HealthRings;
 			productName = HealthRings;
@@ -140,12 +155,28 @@
 			mainGroup = 224E18CD1B89149200B65659;
 			productRefGroup = 224E18D71B89149200B65659 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 224E19191B8A043800B65659 /* Products */;
+					ProjectRef = 224E19181B8A043800B65659 /* ThreeRingControl.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				224E18D51B89149200B65659 /* HealthRings */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		224E191D1B8A043800B65659 /* ThreeRingControl.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ThreeRingControl.framework;
+			remoteRef = 224E191C1B8A043800B65659 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		224E18D41B89149200B65659 /* Resources */ = {
@@ -165,17 +196,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				224E18F41B89158200B65659 /* Utilities.swift in Sources */,
 				224E18DC1B89149200B65659 /* ViewController.swift in Sources */,
-				224E18F61B89159100B65659 /* ThreeRingView.swift in Sources */,
-				224E18F21B89157500B65659 /* RingTip.swift in Sources */,
 				224E18DA1B89149200B65659 /* AppDelegate.swift in Sources */,
-				224E18F01B89157500B65659 /* CircularGradient.swift in Sources */,
-				224E18F11B89157500B65659 /* RingLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		224E19211B8A044C00B65659 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ThreeRingControl;
+			targetProxy = 224E19201B8A044C00B65659 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		224E18DD1B89149200B65659 /* Main.storyboard */ = {
@@ -284,6 +318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = HealthRings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.HealthRings;
@@ -295,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = HealthRings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.HealthRings;
@@ -321,6 +357,7 @@
 				224E18EA1B89149200B65659 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

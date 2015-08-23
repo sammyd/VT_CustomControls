@@ -54,16 +54,16 @@ private class CircularGradientFilter : CIFilter {
 
 
 
-public class CircularGradientLayer : CALayer {
+class CircularGradientLayer : CALayer {
   private let gradientFilter = CircularGradientFilter()
   private let ciContext = CIContext(options: [ kCIContextUseSoftwareRenderer : false ])
   
-  public override init() {
+  override init() {
     super.init()
     needsDisplayOnBoundsChange = true
   }
   
-  public required init?(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     needsDisplayOnBoundsChange = true
   }
@@ -76,13 +76,13 @@ public class CircularGradientLayer : CALayer {
     }
   }
   
-  public var colors: (CGColorRef, CGColorRef) = (UIColor.whiteColor().CGColor, UIColor.blackColor().CGColor) {
+  var colors: (CGColorRef, CGColorRef) = (UIColor.whiteColor().CGColor, UIColor.blackColor().CGColor) {
     didSet {
       setNeedsDisplay()
     }
   }
   
-  public override func drawInContext(ctx: CGContext) {
+  override func drawInContext(ctx: CGContext) {
     super.drawInContext(ctx)
     gradientFilter.outputSize = bounds.size
     gradientFilter.colors = (CIColor(CGColor: colors.0), CIColor(CGColor: colors.1))

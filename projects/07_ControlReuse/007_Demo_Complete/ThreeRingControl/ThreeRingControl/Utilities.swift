@@ -22,8 +22,8 @@
 
 import UIKit
 
-public extension UIColor {
-  public var darkerColor : UIColor {
+extension UIColor {
+  var darkerColor : UIColor {
     var hue : CGFloat = 0.0
     var saturation : CGFloat = 0.0
     var brightness : CGFloat = 0.0
@@ -33,22 +33,22 @@ public extension UIColor {
   }
 }
 
-public extension CGColorRef {
-  public var darkerColor : CGColorRef {
+extension CGColorRef {
+  var darkerColor : CGColorRef {
     let uiColor = UIColor(CGColor: self)
     return uiColor.darkerColor.CGColor
   }
 }
 
-public extension CALayer {
-  public var center : CGPoint {
+extension CALayer {
+  var center : CGPoint {
     return CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
   }
 }
 
 
 
-public extension UIColor {
+extension UIColor {
   static var hrGreenColor : UIColor {
     return UIColor(red: 158.0/255.0, green: 255.0/255.0, blue:   9.0/255.0, alpha: 1.0)
   }
