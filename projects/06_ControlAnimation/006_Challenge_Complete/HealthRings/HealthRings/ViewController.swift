@@ -27,9 +27,11 @@ class ViewController: UIViewController {
   @IBOutlet weak var threeRingView: ThreeRingView!
   @IBOutlet weak var animationEnabledSwitch: UISwitch!
   @IBOutlet var valueSliders: [UISlider]!
+  @IBOutlet weak var durationSlider: UISlider!
   
   @IBAction func handleUpdateButtonTapped() {
     if animationEnabledSwitch.on {
+      threeRingView.animationDuration = NSTimeInterval(durationSlider.value)
       threeRingView.setValueOnRing(.Inner, value: CGFloat(valueSliders[0].value), animated: true)
       threeRingView.setValueOnRing(.Middle, value: CGFloat(valueSliders[1].value), animated: true)
       threeRingView.setValueOnRing(.Outer, value: CGFloat(valueSliders[2].value), animated: true)

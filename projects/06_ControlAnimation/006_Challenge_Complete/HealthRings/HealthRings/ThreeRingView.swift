@@ -101,6 +101,8 @@ class ThreeRingView : UIView {
       }
     }
   }
+  
+  var animationDuration : NSTimeInterval = 1.5
 }
 
 //: Values
@@ -134,7 +136,7 @@ extension ThreeRingView {
   }
   func setValueOnRing(ringIndex: RingIndex, value: CGFloat, animated: Bool = false) {
     CATransaction.begin()
-    CATransaction.setAnimationDuration(5.0)
+    CATransaction.setAnimationDuration(animationDuration)
     rings[ringIndex]?.setValue(value, animated: animated)
     CATransaction.commit()
   }
