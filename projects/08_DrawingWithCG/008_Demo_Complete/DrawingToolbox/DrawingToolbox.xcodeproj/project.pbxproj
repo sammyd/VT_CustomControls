@@ -8,20 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		224E19531B8A0DEF00B65659 /* DrawingToolbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 224E19521B8A0DEF00B65659 /* DrawingToolbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		224E195E1B8A0E2600B65659 /* AngleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E195A1B8A0E2600B65659 /* AngleGestureRecognizer.swift */; };
 		224E195F1B8A0E2600B65659 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E195B1B8A0E2600B65659 /* Canvas.swift */; };
-		224E19601B8A0E2600B65659 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E195C1B8A0E2600B65659 /* ColorPicker.swift */; };
-		224E19611B8A0E2600B65659 /* ColorRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E195D1B8A0E2600B65659 /* ColorRing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		224E194F1B8A0DEF00B65659 /* DrawingToolbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrawingToolbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		224E19521B8A0DEF00B65659 /* DrawingToolbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingToolbox.h; sourceTree = "<group>"; };
 		224E19541B8A0DEF00B65659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		224E195A1B8A0E2600B65659 /* AngleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleGestureRecognizer.swift; sourceTree = "<group>"; };
 		224E195B1B8A0E2600B65659 /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
-		224E195C1B8A0E2600B65659 /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		224E195D1B8A0E2600B65659 /* ColorRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorRing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +48,7 @@
 		224E19511B8A0DEF00B65659 /* DrawingToolbox */ = {
 			isa = PBXGroup;
 			children = (
-				224E195A1B8A0E2600B65659 /* AngleGestureRecognizer.swift */,
 				224E195B1B8A0E2600B65659 /* Canvas.swift */,
-				224E195C1B8A0E2600B65659 /* ColorPicker.swift */,
-				224E195D1B8A0E2600B65659 /* ColorRing.swift */,
 				224E19521B8A0DEF00B65659 /* DrawingToolbox.h */,
 				224E19541B8A0DEF00B65659 /* Info.plist */,
 			);
@@ -143,10 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				224E195E1B8A0E2600B65659 /* AngleGestureRecognizer.swift in Sources */,
-				224E19611B8A0E2600B65659 /* ColorRing.swift in Sources */,
 				224E195F1B8A0E2600B65659 /* Canvas.swift in Sources */,
-				224E19601B8A0E2600B65659 /* ColorPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +284,7 @@
 				224E19591B8A0DEF00B65659 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
