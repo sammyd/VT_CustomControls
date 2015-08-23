@@ -12,11 +12,40 @@
 		22215D731B7B90E40014BA3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22215D711B7B90E40014BA3F /* Main.storyboard */; };
 		22215D751B7B90E40014BA3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22215D741B7B90E40014BA3F /* Assets.xcassets */; };
 		22215D781B7B90E40014BA3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22215D761B7B90E40014BA3F /* LaunchScreen.storyboard */; };
-		22215D801B7B93170014BA3F /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22215D7F1B7B93170014BA3F /* Canvas.swift */; };
-		22215D831B7BE0C60014BA3F /* ColorRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22215D821B7BE0C60014BA3F /* ColorRing.swift */; };
-		222AA82B1B7F4158002B02BD /* AngleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AA82A1B7F4158002B02BD /* AngleGestureRecognizer.swift */; };
-		22F964B41B7F765F000D6191 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F964B31B7F765F000D6191 /* ColorPicker.swift */; };
+		224E19681B8A0E9600B65659 /* DrawingToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E19671B8A0E4B00B65659 /* DrawingToolbox.framework */; };
+		224E19691B8A0E9600B65659 /* DrawingToolbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 224E19671B8A0E4B00B65659 /* DrawingToolbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		224E19661B8A0E4B00B65659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E19621B8A0E4B00B65659 /* DrawingToolbox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 224E194F1B8A0DEF00B65659;
+			remoteInfo = DrawingToolbox;
+		};
+		224E196A1B8A0E9600B65659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E19621B8A0E4B00B65659 /* DrawingToolbox.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 224E194E1B8A0DEF00B65659;
+			remoteInfo = DrawingToolbox;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		224E196C1B8A0E9600B65659 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				224E19691B8A0E9600B65659 /* DrawingToolbox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		22215D6A1B7B90E40014BA3F /* SketchPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SketchPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +55,7 @@
 		22215D741B7B90E40014BA3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22215D771B7B90E40014BA3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22215D791B7B90E40014BA3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22215D7F1B7B93170014BA3F /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
-		22215D821B7BE0C60014BA3F /* ColorRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorRing.swift; sourceTree = "<group>"; };
-		222AA82A1B7F4158002B02BD /* AngleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleGestureRecognizer.swift; sourceTree = "<group>"; };
-		22F964B31B7F765F000D6191 /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		224E19621B8A0E4B00B65659 /* DrawingToolbox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DrawingToolbox.xcodeproj; path = ../DrawingToolbox/DrawingToolbox.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224E19681B8A0E9600B65659 /* DrawingToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +73,7 @@
 		22215D611B7B90E40014BA3F = {
 			isa = PBXGroup;
 			children = (
+				224E19621B8A0E4B00B65659 /* DrawingToolbox.xcodeproj */,
 				22215D6C1B7B90E40014BA3F /* SketchPad */,
 				22215D6B1B7B90E40014BA3F /* Products */,
 			);
@@ -62,7 +90,6 @@
 		22215D6C1B7B90E40014BA3F /* SketchPad */ = {
 			isa = PBXGroup;
 			children = (
-				22215D811B7BDF7A0014BA3F /* Controls */,
 				22215D6D1B7B90E40014BA3F /* AppDelegate.swift */,
 				22215D6F1B7B90E40014BA3F /* ViewController.swift */,
 				22215D711B7B90E40014BA3F /* Main.storyboard */,
@@ -73,15 +100,12 @@
 			path = SketchPad;
 			sourceTree = "<group>";
 		};
-		22215D811B7BDF7A0014BA3F /* Controls */ = {
+		224E19631B8A0E4B00B65659 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22215D7F1B7B93170014BA3F /* Canvas.swift */,
-				22215D821B7BE0C60014BA3F /* ColorRing.swift */,
-				222AA82A1B7F4158002B02BD /* AngleGestureRecognizer.swift */,
-				22F964B31B7F765F000D6191 /* ColorPicker.swift */,
+				224E19671B8A0E4B00B65659 /* DrawingToolbox.framework */,
 			);
-			name = Controls;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,10 +118,12 @@
 				22215D661B7B90E40014BA3F /* Sources */,
 				22215D671B7B90E40014BA3F /* Frameworks */,
 				22215D681B7B90E40014BA3F /* Resources */,
+				224E196C1B8A0E9600B65659 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				224E196B1B8A0E9600B65659 /* PBXTargetDependency */,
 			);
 			name = SketchPad;
 			productName = SketchPad;
@@ -129,12 +155,28 @@
 			mainGroup = 22215D611B7B90E40014BA3F;
 			productRefGroup = 22215D6B1B7B90E40014BA3F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 224E19631B8A0E4B00B65659 /* Products */;
+					ProjectRef = 224E19621B8A0E4B00B65659 /* DrawingToolbox.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				22215D691B7B90E40014BA3F /* SketchPad */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		224E19671B8A0E4B00B65659 /* DrawingToolbox.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DrawingToolbox.framework;
+			remoteRef = 224E19661B8A0E4B00B65659 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		22215D681B7B90E40014BA3F /* Resources */ = {
@@ -155,15 +197,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				22215D701B7B90E40014BA3F /* ViewController.swift in Sources */,
-				22215D831B7BE0C60014BA3F /* ColorRing.swift in Sources */,
 				22215D6E1B7B90E40014BA3F /* AppDelegate.swift in Sources */,
-				22215D801B7B93170014BA3F /* Canvas.swift in Sources */,
-				222AA82B1B7F4158002B02BD /* AngleGestureRecognizer.swift in Sources */,
-				22F964B41B7F765F000D6191 /* ColorPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		224E196B1B8A0E9600B65659 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DrawingToolbox;
+			targetProxy = 224E196A1B8A0E9600B65659 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		22215D711B7B90E40014BA3F /* Main.storyboard */ = {
@@ -272,6 +318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SketchPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.SketchPad;
@@ -283,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SketchPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.SketchPad;
