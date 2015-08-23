@@ -25,7 +25,6 @@ import UIKit
 @IBDesignable
 public class ColorPicker : UIControl {
   private var colorRing : ColorRing?
-  private var gestureRecognizer : AngleGestureRecognizer?
   private var transformAtStartOfGesture : CGAffineTransform?
   
   public override init(frame: CGRect) {
@@ -68,24 +67,7 @@ public class ColorPicker : UIControl {
         selectedColorView.heightAnchor.constraintEqualToAnchor(heightAnchor, multiplier: 0.3)
       ]
     )
-    
-    gestureRecognizer = AngleGestureRecognizer(target: self, action: "handleAngleGestureChange")
-    addGestureRecognizer(gestureRecognizer!)
-  }
-}
 
-extension ColorPicker {
-  func handleAngleGestureChange() {
-    switch gestureRecognizer!.state {
-    case UIGestureRecognizerState.Began:
-      transformAtStartOfGesture = colorRing?.transform
-    case .Changed:
-      colorRing?.transform = CGAffineTransformRotate(transformAtStartOfGesture!, gestureRecognizer!.angleDelta)
-    default:
-      transformAtStartOfGesture = .None
-    }
-    
-    sendActionsForControlEvents(.ValueChanged)
   }
 }
 
