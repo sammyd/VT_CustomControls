@@ -24,14 +24,6 @@ import UIKit
 import DrawingToolbox
 
 class ViewController: UIViewController {
-
-  @IBOutlet weak var colorPicker: ColorPicker!
-  @IBOutlet weak var canvas: Canvas!
-  
-  
-  @IBAction func handleColorPickerValueChanged(sender: AnyObject) {
-    canvas.strokeColor = colorPicker.selectedColor
-  }
   
 }
 

@@ -24,9 +24,6 @@ import UIKit
 
 @IBDesignable
 public class Canvas : UIView {
-  
-  private var drawing: UIImage?
-  
   @IBInspectable
   public var strokeWidth : CGFloat = 4.0
   
@@ -34,35 +31,3 @@ public class Canvas : UIView {
   public var strokeColor : UIColor = UIColor.blackColor()
 }
 
-extension Canvas {
-  public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    if let touch = touches.first {
-      addLineFromPoint(touch.previousLocationInView(self), toPoint: touch.locationInView(self))
-    }
-  }
-}
-
-extension Canvas {
-  private func addLineFromPoint(from: CGPoint, toPoint: CGPoint) {
-    UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-    
-    drawing?.drawInRect(bounds)
-    
-    let cxt = UIGraphicsGetCurrentContext()
-    CGContextMoveToPoint(cxt, from.x, from.y)
-    CGContextAddLineToPoint(cxt, toPoint.x, toPoint.y)
-    
-    CGContextSetLineCap(cxt, .Round)
-    CGContextSetLineWidth(cxt, strokeWidth)
-    strokeColor.setStroke()
-    
-    CGContextStrokePath(cxt)
-    
-    drawing = UIGraphicsGetImageFromCurrentImageContext()
-    
-    layer.contents = drawing?.CGImage
-    
-    UIGraphicsEndImageContext()
-  }
-  
-}
