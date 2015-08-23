@@ -12,9 +12,41 @@
 		22215D511B7A9B600014BA3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22215D4F1B7A9B600014BA3F /* Main.storyboard */; };
 		22215D531B7A9B600014BA3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22215D521B7A9B600014BA3F /* Assets.xcassets */; };
 		22215D561B7A9B600014BA3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22215D541B7A9B600014BA3F /* LaunchScreen.storyboard */; };
-		22215D5E1B7A9D520014BA3F /* IconControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22215D5D1B7A9D520014BA3F /* IconControl.swift */; };
 		22215D601B7AA4970014BA3F /* ImageAttribution in Resources */ = {isa = PBXBuildFile; fileRef = 22215D5F1B7AA4970014BA3F /* ImageAttribution */; };
+		224E19401B8A09F400B65659 /* ImageButtonControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E193F1B8A09EA00B65659 /* ImageButtonControl.framework */; };
+		224E19411B8A09F400B65659 /* ImageButtonControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 224E193F1B8A09EA00B65659 /* ImageButtonControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		224E193E1B8A09EA00B65659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E193A1B8A09EA00B65659 /* ImageButtonControl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 224E192D1B8A09B300B65659;
+			remoteInfo = ImageButtonControl;
+		};
+		224E19421B8A09F400B65659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224E193A1B8A09EA00B65659 /* ImageButtonControl.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 224E192C1B8A09B300B65659;
+			remoteInfo = ImageButtonControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		224E19441B8A09F400B65659 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				224E19411B8A09F400B65659 /* ImageButtonControl.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		22215D481B7A9B600014BA3F /* IconControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,8 +56,8 @@
 		22215D521B7A9B600014BA3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22215D551B7A9B600014BA3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22215D571B7A9B600014BA3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22215D5D1B7A9D520014BA3F /* IconControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconControl.swift; sourceTree = "<group>"; };
 		22215D5F1B7AA4970014BA3F /* ImageAttribution */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ImageAttribution; sourceTree = "<group>"; };
+		224E193A1B8A09EA00B65659 /* ImageButtonControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ImageButtonControl.xcodeproj; path = ../ImageButtonControl/ImageButtonControl.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224E19401B8A09F400B65659 /* ImageButtonControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +75,7 @@
 		22215D3F1B7A9B5F0014BA3F = {
 			isa = PBXGroup;
 			children = (
+				224E193A1B8A09EA00B65659 /* ImageButtonControl.xcodeproj */,
 				22215D4A1B7A9B600014BA3F /* IconControl */,
 				22215D491B7A9B600014BA3F /* Products */,
 			);
@@ -59,17 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				2239BC061B84FE44001B1064 /* App */,
-				2239BC051B84FE36001B1064 /* Control */,
 			);
 			path = IconControl;
-			sourceTree = "<group>";
-		};
-		2239BC051B84FE36001B1064 /* Control */ = {
-			isa = PBXGroup;
-			children = (
-				22215D5D1B7A9D520014BA3F /* IconControl.swift */,
-			);
-			name = Control;
 			sourceTree = "<group>";
 		};
 		2239BC061B84FE44001B1064 /* App */ = {
@@ -86,6 +111,14 @@
 			name = App;
 			sourceTree = "<group>";
 		};
+		224E193B1B8A09EA00B65659 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				224E193F1B8A09EA00B65659 /* ImageButtonControl.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,10 +129,12 @@
 				22215D441B7A9B600014BA3F /* Sources */,
 				22215D451B7A9B600014BA3F /* Frameworks */,
 				22215D461B7A9B600014BA3F /* Resources */,
+				224E19441B8A09F400B65659 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				224E19431B8A09F400B65659 /* PBXTargetDependency */,
 			);
 			name = IconControl;
 			productName = IconControl;
@@ -131,12 +166,28 @@
 			mainGroup = 22215D3F1B7A9B5F0014BA3F;
 			productRefGroup = 22215D491B7A9B600014BA3F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 224E193B1B8A09EA00B65659 /* Products */;
+					ProjectRef = 224E193A1B8A09EA00B65659 /* ImageButtonControl.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				22215D471B7A9B600014BA3F /* IconControl */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		224E193F1B8A09EA00B65659 /* ImageButtonControl.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ImageButtonControl.framework;
+			remoteRef = 224E193E1B8A09EA00B65659 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		22215D461B7A9B600014BA3F /* Resources */ = {
@@ -157,13 +208,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22215D5E1B7A9D520014BA3F /* IconControl.swift in Sources */,
 				22215D4E1B7A9B600014BA3F /* ViewController.swift in Sources */,
 				22215D4C1B7A9B600014BA3F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		224E19431B8A09F400B65659 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ImageButtonControl;
+			targetProxy = 224E19421B8A09F400B65659 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		22215D4F1B7A9B600014BA3F /* Main.storyboard */ = {
@@ -272,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = IconControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.IconControl;
@@ -283,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = IconControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.IconControl;

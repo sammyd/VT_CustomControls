@@ -21,6 +21,7 @@
 */
 
 import UIKit
+import ImageButtonControl
 
 class ViewController: UIViewController {
 

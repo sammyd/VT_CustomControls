@@ -24,7 +24,7 @@ import UIKit
 
 
 @IBDesignable
-class IconControl : UIControl {
+public class IconControl : UIControl {
 
   private lazy var imageView : UIImageView = {
     let iv = UIImageView()
@@ -42,18 +42,18 @@ class IconControl : UIControl {
   private var spacingConstraint : NSLayoutConstraint!
   
   @IBInspectable
-  var spacing: CGFloat = 20.0 {
+  public var spacing: CGFloat = 20.0 {
     didSet {
       spacingConstraint?.constant = spacing
     }
   }
   
-  override init(frame: CGRect) {
+  public override init(frame: CGRect) {
     super.init(frame: frame)
     sharedInitialization()
   }
   
-  required init?(coder aDecoder: NSCoder) {
+  public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     sharedInitialization()
   }
@@ -63,7 +63,7 @@ class IconControl : UIControl {
 // MARK:- Public API
 extension IconControl {
   @IBInspectable
-  var image: UIImage? {
+  public var image: UIImage? {
     get {
       return imageView.image
     }
@@ -73,7 +73,7 @@ extension IconControl {
   }
   
   @IBInspectable
-  var text: String? {
+  public var text: String? {
     get {
       return label.text
     }
@@ -117,7 +117,7 @@ extension IconControl {
 }
 
 extension IconControl {
-  override func tintColorDidChange() {
+  override public func tintColorDidChange() {
     super.tintColorDidChange()
     label.textColor = tintColor
   }
@@ -134,15 +134,15 @@ extension IconControl {
     sendActionsForControlEvents(.TouchUpInside)
   }
   
-  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     animateTintAdjustmentMode(.Dimmed)
   }
   
-  override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+  override public func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
     animateTintAdjustmentMode(.Normal)
   }
   
-  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
     animateTintAdjustmentMode(.Normal)
   }
   
